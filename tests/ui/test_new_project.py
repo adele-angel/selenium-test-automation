@@ -1,7 +1,4 @@
-import pytest
 import re
-
-from selenium import webdriver
 
 from pages.HomePage import HomePage
 from pages.NewProjectPage import NewProjectPage

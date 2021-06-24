@@ -1,5 +1,4 @@
 import time
-from selenium.webdriver.support.ui import Select
 
 from config.locators import TestLocators
 
@@ -17,13 +16,11 @@ class NewProjectPage:
         self.driver.find_element_by_xpath(TestLocators.locator_advanced_settings_xpath).click()
 
     def set_project_description(self, project_description):
-        # self.driver.find_element_by_xpath(TestLocators.locator_description_text_xpath).clear()
+        self.driver.find_element_by_xpath(TestLocators.locator_description_text_xpath).clear()
         self.driver.find_element_by_xpath(TestLocators.locator_description_text_xpath).send_keys(project_description)
 
     def set_status(self, status):
         self.driver.find_element_by_class(TestLocators.locator_status_selector_class).click()
-        status_list = self.driver.find_elements_by_class_name(TestLocators.locator_status_class)
-        status_list[status_list.index(status)].click()
 
     def create_new_project(self):
         self.driver.find_element_by_xpath(TestLocators.locator_save_button_xpath).click()
