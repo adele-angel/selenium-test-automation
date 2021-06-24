@@ -15,3 +15,4 @@ class TestCredentials:
     NEW_PROJECT_PAGE_TITLE = "New project | potato.openproject.com"
     NEW_PROJECT_NAME = "Fries for 2.99$"
     NEW_PROJECT_DESCRIPTION = "French fries, or simply fries, chips, finger chips, hot chips or French-fried potatoes, are deep-fried potatoes, which have been cut into batons."
+    NEW_PROJECT_STATUS = "At risk"
