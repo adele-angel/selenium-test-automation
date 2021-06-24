@@ -1,0 +1,2 @@
+class TestCredentials:
+    pass

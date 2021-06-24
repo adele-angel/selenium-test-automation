@@ -1,0 +1,2 @@
+class TestLocators:
+    pass
