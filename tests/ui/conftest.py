@@ -1,38 +1,28 @@
-import pytest
 from selenium import webdriver
+import pytest
 
 from config.settings import TestSettings
 
 
 @pytest.fixture()
-def setup(browser):
-    if browser == "chrome":
-        driver = webdriver.Chrome(executable_path=TestSettings.CHROME_EXECUTABLE_PATH)
-        print("Launching Chrome Browser...")
-    elif browser == "firefox":
-        driver = webdriver.Firefox(executable_path=TestSettings.FIREFOX_EXECUTABLE_PATH)
-        print("Launching Firefox Browser...")
-    else:
-        driver = webdriver.Chrome(executable_path=TestSettings.CHROME_EXECUTABLE_PATH)
-        print("Launching Chrome Browser...")
+def setup():
+    driver = webdriver.Chrome(executable_path=TestSettings.CHROME_EXECUTABLE_PATH)
+    print("Launching Chrome browser...")
     return driver
 
 
-def pytest_addoption(parser):
-    parser.addoption("--browser")
+"""
+PyTest HTML Report
+"""
 
 
-@pytest.fixture()
-def browser(request):
-    return request.config.getoption("--browser")
+def pytest_configure(config):  # hook for Adding Environment info to HTML Report
+    config._metadata['Project Name'] = 'Selenium Test Automation'
+    config._metadata['Tester'] = 'Adele Angel'
+    config._metadata['Package'] = 'python 3.9.5'
 
 
-def pytest_configure(config):
-    config._metadata['Project Name'] = "Selenium Automation Project"
-    config._metadata['Tester'] = "Adele Angel"
-
-
-@pytest.mark.optionalhook
+@pytest.mark.parametrize  # hook for delete/modify environment info to HTML Report
 def pytest_metadata(metadata):
     metadata.pop("JAVA_HOME", None)
     metadata.pop("Plugins", None)

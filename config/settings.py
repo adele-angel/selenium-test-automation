@@ -9,3 +9,6 @@ class TestSettings:
 
     # Environment
     ENV = "dev"
+
+    # Paths
+    SCREENSHOT_PATH = ".\\screenshots\\"
