@@ -6,6 +6,9 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
+    def open_login_menu(self):
+        self.driver.find_element_by_xpath(TestLocators.locator_login_xpath).click()
+
     def set_username(self, username):
         self.driver.find_element_by_id(TestLocators.locator_username_id).clear()
         self.driver.find_element_by_id(TestLocators.locator_username_id).send_keys(username)
@@ -15,4 +18,4 @@ class LoginPage:
         self.driver.find_element_by_id(TestLocators.locator_password_id).send_keys(password)
 
     def click_login(self):
-        self.driver.find_element_by_xpath(TestLocators.locator_submit_xpath).click()
+        self.driver.find_element_by_id(TestLocators.locator_submit_id).click()

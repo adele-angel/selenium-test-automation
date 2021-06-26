@@ -20,7 +20,9 @@ class NewProjectPage:
         self.driver.find_element_by_xpath(TestLocators.locator_description_text_xpath).send_keys(project_description)
 
     def set_status(self, status):
-        self.driver.find_element_by_class(TestLocators.locator_status_selector_class).click()
+        self.driver.find_element_by_id(TestLocators.locator_status_selector_id).click()
+        status_list = self.driver.find_elements_by_class_name(TestLocators.locator_status_class)
+        print(status_list)
 
     def create_new_project(self):
         self.driver.find_element_by_xpath(TestLocators.locator_save_button_xpath).click()

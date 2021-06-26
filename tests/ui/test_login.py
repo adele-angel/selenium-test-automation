@@ -34,6 +34,7 @@ class TestLogin:
         self.logger.info("--- Opening URL")
         self.driver.get(TestCredentials.BASE_URL)
         self.login_page = LoginPage(self.driver)
+        self.login_page.open_login_menu()
         self.login_page.set_username(TestCredentials.USERNAME)
         self.login_page.set_password(TestCredentials.PASSWORD)
         self.login_page.click_login()

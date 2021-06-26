@@ -12,3 +12,4 @@ class TestSettings:
 
     # Paths
     SCREENSHOT_PATH = ".\\screenshots\\"
+    LOG_PATH = ".\\logs\\automation.log"

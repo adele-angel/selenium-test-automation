@@ -1,9 +1,9 @@
 class TestLocators:
     # LoginPage
-    locator_username_id = "username"
-    locator_password_id = "password"
-    locator_submit_xpath = '//*[@id="login-form"]/form/input[4]'
-    locator_submit_name = "Sign in"
+    locator_login_xpath = '//*[@id="wrapper"]/header/div[3]/ul/li[3]/a/span'
+    locator_username_id = "username-pulldown"
+    locator_password_id = "password-pulldown"
+    locator_submit_id = "login-pulldown"
 
     # HomePage
     locator_new_project_button_xpath = "//*[@id='content']/section[1]/div[2]/div[2]/a[1]"
@@ -16,4 +16,5 @@ class TestLocators:
     locator_status_selector_id = "formly_9_selectProjectStatusInput__links.status_4"
     locator_status_selector_class = "ng-input"
     locator_status_class = "ng-option"
+    locator_status_classes = ["-on-track", "-at-risk", "-off-track"]
     locator_save_button_xpath = '//*[@id="content"]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/div/button'
