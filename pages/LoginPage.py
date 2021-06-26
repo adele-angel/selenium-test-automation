@@ -1,4 +1,3 @@
-from selenium import webdriver
 from config.locators import TestLocators
 
 
@@ -19,3 +18,8 @@ class LoginPage:
 
     def click_login(self):
         self.driver.find_element_by_id(TestLocators.locator_submit_id).click()
+
+    # def get_avatar_alt(self):
+    #     print(self.driver.find_element_by_css_selector(TestLocators.locator_avatar_alt))
+    #     print(self.driver.find_element_by_css_selector(TestLocators.locator_avatar_alt).text)
+    #     return self.driver.find_element_by_css_selector(TestLocators.locator_avatar_alt).text

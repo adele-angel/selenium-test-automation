@@ -1,6 +1,3 @@
-import pytest
-from selenium import webdriver
-
 from pages.LoginPage import LoginPage
 from utils.LogGenerator import LogGenerator
 from config.credentials import TestCredentials
@@ -38,6 +35,19 @@ class TestLogin:
         self.login_page.set_username(TestCredentials.USERNAME)
         self.login_page.set_password(TestCredentials.PASSWORD)
         self.login_page.click_login()
+
+        # avatar_text = self.login_page.get_avatar_alt()
+        #
+        # if avatar_text == TestCredentials.HOME_PAGE_AVATAR:
+        #     self.logger.info("**** Login Page avatar test passed ****")
+        #     self.driver.close()
+        #     assert True
+        # else:
+        #     self.logger.error("**** Login Page avatar test failed ****")
+        #     self.driver.save_screenshot(TestSettings.SCREENSHOT_PATH + "009_002_home_page_avatar.png")
+        #     self.driver.close()
+        #     assert False
+
         actual_title = self.driver.title
 
         if actual_title == TestCredentials.HOME_PAGE_TITLE:
@@ -49,3 +59,5 @@ class TestLogin:
             self.driver.save_screenshot(TestSettings.SCREENSHOT_PATH + "009_002_home_page_title.png")
             self.driver.close()
             assert False
+
+# Add a testing method for login
