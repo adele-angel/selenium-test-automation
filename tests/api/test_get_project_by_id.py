@@ -1,3 +1,18 @@
+"""
+Test 001 - API - Get Project by ID
+
+Prerequisites:
+    A project named "TestProject1" with description "This is the first test project" already exists
+
+Step:
+    Send a request to get a project by ID. Use the ID of "TestProject1"
+
+Expected Result:
+    1. Response status: 200
+    2. Project name is "TestProject1"
+    3. Project description is "This is the first test project"
+"""
+
 import requests
 from requests.auth import HTTPBasicAuth
 from config.api import TestAPI

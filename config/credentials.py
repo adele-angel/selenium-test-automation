@@ -4,7 +4,7 @@ class TestCredentials:
     EMAIL = "admin@example.net"
     USERNAME = "admin"
     PASSWORD = "qazwsxedcr"
-    API_KEY = "b28db86680ba1394cfdc970511a51d7e4a4625de9c43254d273c52477f84d7cb"
+    API_KEY = "3fe05c845674a2ec3e264561fde405a39bacac54720366b0363c1b18fd218ed7"
 
     # Login Page
     LOGIN_PAGE_TITLE = "OpenProject"
@@ -17,6 +17,7 @@ class TestCredentials:
     # New Project page
     NEW_PROJECT_PAGE_TITLE = "New project | OpenProject"
     NEW_PROJECT_NAME = "Fries for 2.99$"
+    # NEW_PROJECT_NAME = "Fries for 2"
     NEW_PROJECT_DESCRIPTION = "French fries, or simply fries, chips, finger chips, hot chips or French-fried potatoes, are deep-fried potatoes, which have been cut into batons."
     NEW_PROJECT_STATUS = "ON TRACK"
 

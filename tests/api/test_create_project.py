@@ -1,5 +1,15 @@
-import json
+"""
+Test 003 - API - Create Project
 
+Step:
+    Send a request to create a new project with a unique name
+
+Expected Result:
+    1. Response status: 200
+    2. Response contains a "project" object with name and identifier matching the values set in the request
+"""
+
+import json
 import requests
 from requests.auth import HTTPBasicAuth
 from config.api import TestAPI

@@ -1,12 +1,26 @@
-import json
+"""
+Test 002 - API - Update Project
 
+Prerequisites:
+    A project named "TestProject1" already exists
+
+Step:
+    Send a request to update a project by ID.
+    Use a unique string to set as the new project description
+
+Expected Result:
+    1. Response status: 200
+    2. Response contains a "project" object with description matching the value set in the request
+"""
+
+import json
 import requests
 from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
 
 
 def test_update_project_by_id():
-    # Send GET request
+
     payload = {
         "description": {
             "raw": "Let's update this project!"
@@ -18,6 +32,7 @@ def test_update_project_by_id():
 
     # TODO: check if the project exists
 
+    # Send PATCH request
     res = requests.patch(TestAPI.BASE_URL + "/projects/" + TestAPI.PROJECT_ID, headers=headers,
                          auth=auth, data=json.dumps(payload))
 
