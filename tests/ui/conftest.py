@@ -2,13 +2,14 @@ from selenium import webdriver
 import pytest
 
 from config.settings import TestSettings
+from utils.webdriver_factory import WebDriverFactory
 
 
-@pytest.fixture()
+@pytest.fixture(scope="function")
 def setup():
-    driver = webdriver.Chrome(executable_path=TestSettings.CHROME_EXECUTABLE_PATH)
-    print("Launching Chrome browser...")
-    return driver
+    driver = WebDriverFactory.create_driver("")
+    yield driver
+    driver.quit()
 
 
 """
