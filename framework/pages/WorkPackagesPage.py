@@ -1,14 +1,18 @@
 import copy
 import time
 
+from selenium.webdriver.common.by import By
+
 from config.locators import Locators
 
-
 # TODO: Put locators in config file
+from infra.web_driver_extensions import WebDriverExtensions
+
 
 class WorkPackagesPage:
     def __init__(self, driver):
         self.driver = driver
+        self.driver_extended = WebDriverExtensions(driver)
 
     def create_new_task(self):
         # Click "+ Create"
@@ -28,9 +32,9 @@ class WorkPackagesPage:
         self.driver.find_element_by_id("work-packages--edit-actions-save").click()
 
     def get_table_row_count(self):
-        rows = self.driver.find_elements_by_xpath(
-            "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr")
-        return copy.deepcopy(len(rows))
+        rows = self.driver_extended.get_elements(
+            (By.XPATH, "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"))
+        return len(rows)
 
     def get_last_table_row(self):
         # TODO: refactor
