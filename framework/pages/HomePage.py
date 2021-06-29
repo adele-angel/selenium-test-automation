@@ -18,3 +18,4 @@ class HomePage:
         time.sleep(2)
         # TODO: change to time.sleep() function into a waiter
         self.driver.find_element_by_xpath(f"//li[contains(@class,'menu-item')]//a[.='{project_name}']").click()
+
