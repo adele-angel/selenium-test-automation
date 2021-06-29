@@ -77,3 +77,11 @@ class HttpClient:
 
         # invoke
         return requests.patch(url, json=command.body, auth=self.auth, headers=command.headers)
+
+    def __delete(self, command: HttpCommand) -> Response:
+        # setup
+        url = f'{self.base_url}{command.route}'
+        command.headers['Content-Type'] = 'application/json'
+
+        # invoke
+        return requests.delete(url, auth=self.auth, headers=command.headers)
