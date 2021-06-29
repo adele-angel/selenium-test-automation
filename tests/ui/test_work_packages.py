@@ -31,7 +31,8 @@ def test_create_new_task(setup):
     time.sleep(5)
     work_packages_page.click_go_back_button()
     # TODO: change to time.sleep() function into a waiter
-    time.sleep(1)
+    time.sleep(2)
 
-    assert initial_row_count + 1 == work_packages_page.get_table_row_count()
+    new_value = work_packages_page.get_table_row_count()
+    assert initial_row_count + 1 == new_value
     assert Credentials.NEW_TASK_SUBJECT == work_packages_page.get_last_table_row()["subject"]

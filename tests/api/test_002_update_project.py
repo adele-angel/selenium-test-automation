@@ -24,7 +24,7 @@ def test_002_update_project():
             "raw": TestAPI.PROJECT_DESC_UPD
         }
     }
-    actual = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).update_project("4", data)
+    actual = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).update_project("5", data)
     actual_data = actual.json()
 
     assert actual.status_code == 200, "Failed to get correct response code"

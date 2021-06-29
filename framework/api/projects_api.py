@@ -1,6 +1,5 @@
 from requests import Response
 from requests.auth import HTTPBasicAuth
-
 from infra.http_client import HttpClient, HttpCommand
 
 
@@ -17,27 +16,22 @@ class ProjectsApi:
         self.http_client.set_auth(auth)
         return self
 
-    # @GET /projects/:id
+    # GET /projects/:id
     def get_project(self, project_id: str) -> Response:
-        command = HttpCommand().set_route(f'{self.base_route}/{project_id}')
+        command = HttpCommand().set_route(f'{self.base_route}/{project_id}').set_method('GET')
         return self.http_client.send(command)
 
-    # @POST /projects/
+    # POST /projects/
     def create_project(self, body):
         command = HttpCommand().set_body(body).set_route(self.base_route).set_method('POST')
         return self.http_client.send(command)
 
-    # @PATCH /projects/:id
+    # PATCH /projects/:id
     def update_project(self, project_id: str, body):
         command = HttpCommand().set_body(body).set_route(f'{self.base_route}/{project_id}').set_method('PATCH')
         return self.http_client.send(command)
 
-    # @DELETE /projects/:id
+    # DELETE /projects/:id
     def delete_project(self, project_id: str):
-        command = {
-            "type": "DELETE",
-            "headers": self.headers,
-            "auth": self.auth,
-            "route": self.projects_url(project_id)
-        }
-        return self.http_client.get(command)
+        command = HttpCommand().set_route(f'{self.base_route}/{project_id}').set_method('DELETE')
+        return self.http_client.send(command)

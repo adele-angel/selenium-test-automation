@@ -16,138 +16,28 @@ Step:
             1. Response status: 404
             2. Response contains an error "message": "Work packages in non descendant projects reference versions of the project or its descendants."
 """
+from time import sleep
 
-import json
-import time
-import requests
-from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
+from framework.api.projects_api import ProjectsApi
 
 
 def test_004_delete_project():
-    pass
+    # Creating a new project
+    data = {
+        "name": "TestProject5"
+    }
 
+    actual = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).create_project(data)
+    actual_data = actual.json()
+    project_id = actual_data["id"]
+    assert actual.status_code == 201, project_id
 
-def create_project(project_name):
-    payload = {"name": project_name}
-    headers = {'Content-Type': 'application/json'}
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+    # Delete newly created project
+    delete_action = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).delete_project(project_id)
+    assert delete_action.status_code == 204
 
-    res = requests.post(TestAPI.BASE_URL + "/projects/", headers=headers, auth=auth, data=json.dumps(payload))
-    return res
-
-
-def delete_project(project_name):
-    headers = {'Content-Type': 'application/json'}
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-    res = create_project(project_name)
-    json_res = res.json()
-    id = str(json_res["id"])
-    response = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
-    assert response.status_code == 204
-    return id
-
-
-def test_create_project():
-    res = requests.Session()
-
-    payload = {"name": "HELLLOOOOO"}
-    headers = {'Content-Type': 'application/json'}
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-
-    res.post(TestAPI.BASE_URL + "/projects/", headers=headers, auth=auth, data=json.dumps(payload))
-
-    # Validating response code
-    assert res.status_code == 201, "Failed to get correct response code"
-    # Parse response to json format
-    json_res = res.json()
-    # Validating project name
-    assert json_res["name"] == "sdd", "Failed to get correct project name"
-    # Validating project description
-    assert json_res["identifier"] == "sdd", "Failed to get correct project identifier"
-
-
-def test_delete_project():
-    res = create_project("Hlloosfgdddrefggffsss2f")
-    json_res = res.json()
-    id = str(json_res["id"])
-
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-    headers = {'Content-Type': 'application/json'}
-
-    res = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
-
-    # Validating response code
-    assert res.status_code == 204, "Failed to get correct response code"
-
-
-def test_delete_project_again():
-    id = delete_project("pggpehfdfo")
-    time.sleep(5)
-
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-    headers = {'Content-Type': 'application/json'}
-    res = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
-
-    # Validating response code
-    assert res.status_code == 404, "Failed to get correct response code"
-
-#
-#
-# def create_project(project_name):
-#     payload = {"name": project_name}
-#     headers = {'Content-Type': 'application/json'}
-#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-#
-#     res = requests.post(TestAPI.BASE_URL + "/projects/", headers=headers, auth=auth, data=json.dumps(payload))
-#     return res
-#
-#
-# def delete_project(project_name):
-#     headers = {'Content-Type': 'application/json'}
-#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-#     res = create_project(project_name)
-#     json_res = res.json()
-#     id = str(json_res["id"])
-#     response = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
-#     assert response.status_code == 204
-#     return id
-#
-#
-# def test_create_project():
-#     res = create_project("sdd")
-#
-#     # Validating response code
-#     assert res.status_code == 201, "Failed to get correct response code"
-#     # Parse response to json format
-#     json_res = res.json()
-#     # Validating project name
-#     assert json_res["name"] == "sdd", "Failed to get correct project name"
-#     # Validating project description
-#     assert json_res["identifier"] == "sdd", "Failed to get correct project identifier"
-#
-#
-# def test_delete_project():
-#     res = create_project("Hlloosfgdddrefggffsss2f")
-#     json_res = res.json()
-#     id = str(json_res["id"])
-#
-#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-#     headers = {'Content-Type': 'application/json'}
-#
-#     res = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
-#
-#     # Validating response code
-#     assert res.status_code == 204, "Failed to get correct response code"
-#
-#
-# def test_delete_project_again():
-#     id = delete_project("pggpehfdfo")
-#     time.sleep(5)
-#
-#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-#     headers = {'Content-Type': 'application/json'}
-#     res = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
-#
-#     # Validating response code
-#     assert res.status_code == 404, "Failed to get correct response code"
+    # Confirm project was deleted
+    sleep(5)  # wait for actual server side delete
+    get_action = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).get_project(project_id)
+    assert get_action.status_code == 404
