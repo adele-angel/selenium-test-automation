@@ -19,7 +19,7 @@ from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
 
 
-def test_update_work_package():
+def test_006_update_work_package():
     payload = {
         "lockVersion": 2,
         "description": {

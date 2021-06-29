@@ -1,63 +1,18 @@
-from pages.LoginPage import LoginPage
-from utils.LogGenerator import LogGenerator
-from config.credentials import TestCredentials
-from config.settings import TestSettings
+from config.credentials import Credentials
+from infra.shared_steps import SharedSteps
 
 
-class TestLogin:
-    logger = LogGenerator.log_generator()
+def test_login_page_title(setup):
+    driver = setup
+    driver.get(Credentials.BASE_URL)
 
-    def test_login_page_title(self, setup):
-        self.logger.info("*************** Test_001_Login *****************")
-        self.logger.info("--- Verifying Login Page Title")
-        self.driver = setup
-        self.logger.info("--- Opening URL")
-        self.driver.get(TestCredentials.BASE_URL)
-        actual_title = self.driver.title
+    assert driver.title == Credentials.LOGIN_PAGE_TITLE
 
-        if actual_title == TestCredentials.LOGIN_PAGE_TITLE:
-            self.logger.info("**** Login Page title test passed ****")
-            self.driver.close()
-            assert True
-        else:
-            self.logger.error("**** Login Page title test failed ****")
-            self.driver.save_screenshot(TestSettings.SCREENSHOT_PATH + "009_001_login_page_title.png")
-            self.driver.close()
-            assert False
 
-    def test_login(self, setup):
-        self.logger.info("--- Verifying Login into user account")
-        self.driver = setup
-        self.logger.info("--- Opening URL")
-        self.driver.get(TestCredentials.BASE_URL)
-        self.login_page = LoginPage(self.driver)
-        self.login_page.open_login_menu()
-        self.login_page.set_username(TestCredentials.USERNAME)
-        self.login_page.set_password(TestCredentials.PASSWORD)
-        self.login_page.click_login()
+def test_login(setup):
+    driver = setup
+    driver.get(Credentials.BASE_URL)
 
-        # avatar_text = self.login_page.get_avatar_alt()
-        #
-        # if avatar_text == TestCredentials.HOME_PAGE_AVATAR:
-        #     self.logger.info("**** Login Page avatar test passed ****")
-        #     self.driver.close()
-        #     assert True
-        # else:
-        #     self.logger.error("**** Login Page avatar test failed ****")
-        #     self.driver.save_screenshot(TestSettings.SCREENSHOT_PATH + "009_002_home_page_avatar.png")
-        #     self.driver.close()
-        #     assert False
+    SharedSteps.login_steps(driver)
 
-        actual_title = self.driver.title
-
-        if actual_title == TestCredentials.HOME_PAGE_TITLE:
-            self.logger.info("**** Login Page title test passed ****")
-            self.driver.close()
-            assert True
-        else:
-            self.logger.error("**** Login Page title test failed ****")
-            self.driver.save_screenshot(TestSettings.SCREENSHOT_PATH + "009_002_home_page_title.png")
-            self.driver.close()
-            assert False
-
-# Add a testing method for login
+    assert driver.title == Credentials.HOME_PAGE_TITLE

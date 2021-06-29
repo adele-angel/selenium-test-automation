@@ -27,6 +27,10 @@ headers = {'Content-Type': 'application/json'}
 auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
 
 
+def test_008_delete_project():
+    pass
+
+
 def create_work_package(work_package_name):
     payload = {
         "subject": work_package_name,

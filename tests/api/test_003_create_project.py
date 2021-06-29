@@ -15,7 +15,7 @@ from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
 
 
-def test_create_project():
+def test_003_create_project():
     payload = {
         "name": "Hello World! @ 127"
     }

@@ -20,7 +20,7 @@ from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
 
 
-def test_create_work_package():
+def test_007_create_work_package():
     payload = {
         "subject": "THIS IS A NEW TASK!"
     }

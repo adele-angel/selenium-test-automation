@@ -18,7 +18,7 @@ from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
 
 
-def test_get_work_package_by_id():
+def test_005_get_work_package():
     # Send GET request
     res = requests.get(TestAPI.BASE_URL + "/work_packages/" + "34", auth=HTTPBasicAuth('apikey', TestAPI.API_KEY))
 

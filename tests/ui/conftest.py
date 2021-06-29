@@ -1,13 +1,14 @@
 from selenium import webdriver
 import pytest
 
-from config.settings import TestSettings
-from utils.webdriver_factory import WebDriverFactory
+from config.settings import Settings
+from infra.webdriver_factory import WebDriverFactory
 
 
 @pytest.fixture(scope="function")
 def setup():
-    driver = WebDriverFactory.create_driver("")
+    driver = WebDriverFactory.create_driver("chrome")
+    # driver = WebDriverFactory.create_driver("firefox")
     yield driver
     driver.quit()
 

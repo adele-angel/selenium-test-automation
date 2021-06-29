@@ -1,13 +1,11 @@
-class TestCredentials:
+class Credentials:
     BASE_URL = "http://localhost:8080/"
-
-    EMAIL = "admin@example.net"
-    USERNAME = "admin"
-    PASSWORD = "qazwsxedcr"
-    API_KEY = "3fe05c845674a2ec3e264561fde405a39bacac54720366b0363c1b18fd218ed7"
 
     # Login Page
     LOGIN_PAGE_TITLE = "OpenProject"
+    EMAIL = "admin@example.net"
+    USERNAME = "admin"
+    PASSWORD = "qazwsxedcr"
 
     # Home Page
     HOME_PAGE_TITLE = "OpenProject"
@@ -21,20 +19,9 @@ class TestCredentials:
     NEW_PROJECT_DESCRIPTION = "French fries, or simply fries, chips, finger chips, hot chips or French-fried potatoes, are deep-fried potatoes, which have been cut into batons."
     NEW_PROJECT_STATUS = "ON TRACK"
 
-    # BASE_URL = "https://potato.openproject.com/"
-    #
-    # USERNAME = "jitibif935@awinceo.com"
-    # PASSWORD = "pika@12345"
-    # ACCOUNT_NAME = "Potato Inc."
-    #
-    # # Login Page
-    # LOGIN_PAGE_TITLE = "Sign in | potato.openproject.com"
-    #
-    # # Home Page
-    # HOME_PAGE_TITLE = "potato.openproject.com"
-    #
-    # # New Project page
-    # NEW_PROJECT_PAGE_TITLE = "New project | potato.openproject.com"
-    # NEW_PROJECT_NAME = "Fries for 2.99$"
-    # NEW_PROJECT_DESCRIPTION = "French fries, or simply fries, chips, finger chips, hot chips or French-fried potatoes, are deep-fried potatoes, which have been cut into batons."
-    # NEW_PROJECT_STATUS = "-off-track"
+    # Project Overview Page
+    PROJECT_OVERVIEW_PAGE_TITLE = "Overview"
+
+    # Work Packages Page
+    NEW_TASK_SUBJECT = "My Task 1"
+    NEW_TASK_DESCRIPTION = "123 @ # $ ./ - Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend at magna eu lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean quis sodales lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus accumsan consectetur arcu, eu pellentesque nunc gravida et. Sed posuere non massa sit amet mattis. Aenean fermentum euismod purus, id elementum nisl vulputate nec. Integer quis urna molestie, interdum orci quis, molestie ligula. Suspendisse potenti. Etiam placerat, turpis id convallis sagittis, magna metus porta eros, in finibus sapien arcu ac tortor. Praesent tempus, nibh ornare pulvinar placerat, augue elit dictum arcu, sit amet ultricies erat ante fermentum metus."

@@ -1,11 +1,11 @@
-class TestLocators:
-    # LoginPage
+class Locators:
+    # Login Page
     locator_login_xpath = '//*[@id="wrapper"]/header/div[3]/ul/li[3]/a/span'
     locator_username_id = "username-pulldown"
     locator_password_id = "password-pulldown"
     locator_submit_id = "login-pulldown"
 
-    # HomePage
+    # Home Page
     locator_avatar_alt = '[alt="A A"]'
     locator_new_project_button_xpath = "//*[@id='content']/section[1]/div[2]/div[2]/a[1]"
 
@@ -21,8 +21,8 @@ class TestLocators:
     btnSaveNewProduct_xpath = "//button[@type='submit'][@class='button -highlight']"
     locator_save_button_xpath = '//*[@id="content"]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/div/button'
 
-    # WorkPackagesPage
-    locator_project_selector_xpath = '//*[@id="projects-menu"]/span'
-    locator_project_list_id = "ui-id-1"
+    # Project Overview Page
 
-    # ProjectOverViewPage
+    # Work Packages Page
+    locator_project_selector_xpath = '//*[@id="projects-menu"]/span'
+    locator_project_list_id = "ui-id-9"

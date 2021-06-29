@@ -24,6 +24,10 @@ from requests.auth import HTTPBasicAuth
 from config.api import TestAPI
 
 
+def test_004_delete_project():
+    pass
+
+
 def create_project(project_name):
     payload = {"name": project_name}
     headers = {'Content-Type': 'application/json'}
@@ -45,7 +49,13 @@ def delete_project(project_name):
 
 
 def test_create_project():
-    res = create_project("sdd")
+    res = requests.Session()
+
+    payload = {"name": "HELLLOOOOO"}
+    headers = {'Content-Type': 'application/json'}
+    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+
+    res.post(TestAPI.BASE_URL + "/projects/", headers=headers, auth=auth, data=json.dumps(payload))
 
     # Validating response code
     assert res.status_code == 201, "Failed to get correct response code"
@@ -81,3 +91,63 @@ def test_delete_project_again():
 
     # Validating response code
     assert res.status_code == 404, "Failed to get correct response code"
+
+#
+#
+# def create_project(project_name):
+#     payload = {"name": project_name}
+#     headers = {'Content-Type': 'application/json'}
+#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+#
+#     res = requests.post(TestAPI.BASE_URL + "/projects/", headers=headers, auth=auth, data=json.dumps(payload))
+#     return res
+#
+#
+# def delete_project(project_name):
+#     headers = {'Content-Type': 'application/json'}
+#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+#     res = create_project(project_name)
+#     json_res = res.json()
+#     id = str(json_res["id"])
+#     response = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
+#     assert response.status_code == 204
+#     return id
+#
+#
+# def test_create_project():
+#     res = create_project("sdd")
+#
+#     # Validating response code
+#     assert res.status_code == 201, "Failed to get correct response code"
+#     # Parse response to json format
+#     json_res = res.json()
+#     # Validating project name
+#     assert json_res["name"] == "sdd", "Failed to get correct project name"
+#     # Validating project description
+#     assert json_res["identifier"] == "sdd", "Failed to get correct project identifier"
+#
+#
+# def test_delete_project():
+#     res = create_project("Hlloosfgdddrefggffsss2f")
+#     json_res = res.json()
+#     id = str(json_res["id"])
+#
+#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+#     headers = {'Content-Type': 'application/json'}
+#
+#     res = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
+#
+#     # Validating response code
+#     assert res.status_code == 204, "Failed to get correct response code"
+#
+#
+# def test_delete_project_again():
+#     id = delete_project("pggpehfdfo")
+#     time.sleep(5)
+#
+#     auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+#     headers = {'Content-Type': 'application/json'}
+#     res = requests.delete(TestAPI.BASE_URL + "/projects/" + id, headers=headers, auth=auth)
+#
+#     # Validating response code
+#     assert res.status_code == 404, "Failed to get correct response code"
