@@ -10,7 +10,7 @@ class NewProjectPage:
     def set_project_name(self, project_name):
         time.sleep(1)
         # TODO: change to time.sleep() function into a waiter
-        self.driver.find_element_by_id(Locators.locator_project_name_id).send_keys(project_name)
+        self.driver.find_element_by_id(Locators.btn_new_project_xpath).send_keys(project_name)
 
     def click_advanced_settings(self):
         time.sleep(1)

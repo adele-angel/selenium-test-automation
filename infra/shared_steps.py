@@ -1,6 +1,6 @@
 from config.credentials import Credentials
-from framework.pages.HomePage import HomePage
 from framework.pages.LoginPage import LoginPage
+from framework.pages.HomePage import HomePage
 from framework.pages.ProjectOverviewPage import ProjectOverviewPage
 
 

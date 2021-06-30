@@ -1,5 +1,5 @@
 from config.credentials import Credentials
-from infra.shared_steps import SharedSteps
+from framework.pages.LoginPage import LoginPage
 
 
 def test_login_page_title(setup):
@@ -13,6 +13,10 @@ def test_login(setup):
     driver = setup
     driver.get(Credentials.BASE_URL)
 
-    SharedSteps.login_steps(driver)
+    login_page = LoginPage(driver)
+    login_page.open_login_menu()
+    login_page.set_username(Credentials.USERNAME)
+    login_page.set_password(Credentials.PASSWORD)
+    login_page.click_login()
 
     assert driver.title == Credentials.HOME_PAGE_TITLE

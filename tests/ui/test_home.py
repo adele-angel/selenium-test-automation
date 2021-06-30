@@ -1,5 +1,5 @@
 from config.credentials import Credentials
-from framework.pages import HomePage
+from framework.pages.HomePage import HomePage
 from infra.shared_steps import SharedSteps
 
 
@@ -8,6 +8,7 @@ def test_click_new_project(setup):
     driver.get(Credentials.BASE_URL)
 
     SharedSteps.login_steps(driver)
+
     home_page = HomePage(driver)
     home_page.click_new_project()
 

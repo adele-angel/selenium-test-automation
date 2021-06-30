@@ -17,6 +17,12 @@ class WorkPackagesPage:
     def create_new_task(self):
         # Click "+ Create"
         self.driver.find_element_by_xpath('//*[@id="wrapper"]/header/div[1]/ul/li[2]').click()
+
+
+        """
+        element = driver.find_element(''')
+        element.find_element_by_xpath('.//somexpath') # When using XPath in the context of element we have to start the XPath expression with '.'.
+        """
         # TODO: change to time.sleep() function into a waiter
         time.sleep(1)
         # Choose work package of type "Task"
