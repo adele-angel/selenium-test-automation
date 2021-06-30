@@ -17,60 +17,35 @@ Step:
             2. Response contains an error "message": "The requested resource could not be found."
 """
 
-import json
-import time
-import requests
-from requests.auth import HTTPBasicAuth
-from config.api import TestAPI
-
-headers = {'Content-Type': 'application/json'}
-auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+from time import sleep
+from config.api import API
+from framework.api.work_packages_api import WorkPackagesApi
 
 
-def test_008_delete_project():
-    pass
-
-
-def create_work_package(work_package_name):
-    payload = {
-        "subject": work_package_name,
+def test_008_delete_work_package():
+    data = {
+        "subject": API.TEST_008["WORK_PACKAGE_SUBJECT"],
         "_links": {
             "project": {
-                "href": "/api/v3/projects/3"
+                "href": f'/api/v3/projects/{API.TEST_001["PROJECT_ID"]}'
             }
         }
     }
-    res = requests.post(TestAPI.BASE_URL + "/work_packages/", headers=headers, auth=auth, data=json.dumps(payload))
-    return res
 
+    # Create a new work package
+    # Send POST request
+    actual = WorkPackagesApi(API.BASE_URL, API.API_KEY).create_work_package(data)
+    actual_data = actual.json()
+    work_package_id = actual_data["id"]
+    assert actual.status_code == 201, f'Failed to get correct response code {actual.status_code}'
 
-def delete_work_package(work_package_name):
-    res = create_work_package(work_package_name)
-    json_res = res.json()
-    id = str(json_res["id"])
-    response = requests.delete(TestAPI.BASE_URL + "/work_packages/" + id, headers=headers, auth=auth)
-    return id
+    # Delete newly created work package
+    # Send DELETE request
+    delete_action = WorkPackagesApi(API.BASE_URL, API.API_KEY).delete_work_package(work_package_id)
+    assert delete_action.status_code == 204, f'Failed to get correct response code {delete_action.status_code}'
 
-
-def test_create_work_package():
-    work_package_name = "This is a new work package"
-    res = create_work_package(work_package_name)
-    assert res.status_code == 201, "Failed to get correct response code"
-    json_res = res.json()
-    assert json_res["subject"] == work_package_name, "Failed to get correct project name"
-
-
-def test_delete_work_package():
-    res = create_work_package("This is another work package")
-    json_res = res.json()
-    id = str(json_res["id"])
-    res = requests.delete(TestAPI.BASE_URL + "/work_packages/" + id, headers=headers, auth=auth)
-    assert res.status_code == 204, "Failed to get correct response code"
-
-
-def test_delete_work_package_again():
-    id = delete_work_package("This is yet another work package")
-    time.sleep(5)
-    res = requests.delete(TestAPI.BASE_URL + "/work_packages/" + id, headers=headers, auth=auth)
-    # Validating response code
-    assert res.status_code == 404, "Failed to get correct response code"
+    # Confirm the work package was deleted
+    sleep(5)  # wait for actual server side delete
+    # Send GET request
+    get_action = WorkPackagesApi(API.BASE_URL, API.API_KEY).get_work_package(work_package_id)
+    assert get_action.status_code == 404, f'Failed to get correct response code {get_action.status_code}'

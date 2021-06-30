@@ -14,28 +14,25 @@ Expected Result:
     2. Response contains a "work package" object with description matching the value set in the request
 """
 
-import json
-import requests
-from requests.auth import HTTPBasicAuth
-from config.api import TestAPI
+from config.api import API
+from framework.api.work_packages_api import WorkPackagesApi
 
 
 def test_007_create_work_package():
-    payload = {
-        "subject": "THIS IS A NEW TASK!"
+    data = {
+        "subject": API.TEST_007["WORK_PACKAGE_SUBJECT"],
+        "_links": {
+            "project": {
+                "href": f'/api/v3/projects/{API.TEST_001["PROJECT_ID"]}'
+            }
+        }
     }
 
-    headers = {'Content-Type': 'application/json'}
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
-
-    res = requests.post(TestAPI.BASE_URL + "/projects/3/work_packages", headers=headers, auth=auth,
-                        data=json.dumps(payload))
-
-    # Validating response code
-    assert res.status_code == 201, "Failed to get correct response code"
-
+    # Send POST request
+    actual = WorkPackagesApi(API.BASE_URL, API.API_KEY).create_work_package(data)
     # Parse response to json format
-    json_res = res.json()
+    actual_data = actual.json()
 
-    # Validating work package subject
-    assert json_res["subject"] == payload["subject"], "Failed to get correct work package subject"
+    # Validate status code
+    assert actual.status_code == 201, "Failed to get correct response code"
+    assert actual_data["subject"] == API.TEST_007["WORK_PACKAGE_SUBJECT"], "Failed to get correct work package subject"

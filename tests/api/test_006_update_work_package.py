@@ -13,36 +13,26 @@ Expected Result:
     2. Response contains a "work package" object with description matching the value set in the request
 """
 
-import json
-import requests
-from requests.auth import HTTPBasicAuth
-from config.api import TestAPI
+from config.api import API
+from framework.api.work_packages_api import WorkPackagesApi
 
 
 def test_006_update_work_package():
-    payload = {
-        "lockVersion": 2,
+    data = {
+        "lockVersion": API.TEST_006["lockVersion"],
         "description": {
-            "raw": "This is updated description for task 1!"
+            "raw": API.TEST_006["WORK_PACKAGE_DESC_UPD"]
         }
     }
-
-    headers = {'Content-Type': 'application/json'}
-    auth = HTTPBasicAuth('apikey', TestAPI.API_KEY)
+    # TODO: add a get request to get lockversion, and task id
 
     # Send PATCH request
-    res = requests.patch(TestAPI.BASE_URL + "/work_packages/" + "34", headers=headers,
-                         auth=auth, data=json.dumps(payload))
-
-    # Validating response code
-    assert res.status_code == 200, "Failed to get correct response code"
-
+    actual = WorkPackagesApi(API.BASE_URL, API.API_KEY).update_work_package(API.TEST_005["WORK_PACKAGE_ID"], data)
     # Parse response to json format
-    json_res = res.json()
+    actual_data = actual.json()
 
-    # Validating response object
-    assert json_res, "Failed to get work package object"
-
-    # Validating work package description
-    assert json_res["description"]["raw"] == payload["description"][
-        "raw"], "Failed to get correct work package description"
+    # Validate status code
+    assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
+    # Validate work package description
+    assert actual_data["description"]["raw"] == API.TEST_006[
+        "WORK_PACKAGE_DESC_UPD"], f'Failed to get matching work package description {actual_data["description"]["raw"]}'

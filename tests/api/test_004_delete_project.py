@@ -1,7 +1,7 @@
 """
 Test 004 - API - Delete Project
 
-Step:
+Steps:
     1. Send a request to create a new project with a unique name
         Expected Result:
             1. Response status: 201
@@ -14,30 +14,33 @@ Step:
     3. Verify the project was deleted by sending a request to get a project by ID
         Expected Result:
             1. Response status: 404
-            2. Response contains an error "message": "Work packages in non descendant projects reference versions of the project or its descendants."
+            2. Response contains an error message: "The requested resource could not be found."
 """
 from time import sleep
 
-from config.api import TestAPI
+from config.api import API
 from framework.api.projects_api import ProjectsApi
 
 
 def test_004_delete_project():
-    # Creating a new project
     data = {
-        "name": "TestProject5"
+        "name": API.TEST_004["PROJECT_NAME"]
     }
 
-    actual = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).create_project(data)
+    # Create a new project
+    # Send POST request
+    actual = ProjectsApi(API.BASE_URL, API.API_KEY).create_project(data)
     actual_data = actual.json()
     project_id = actual_data["id"]
     assert actual.status_code == 201, project_id
 
     # Delete newly created project
-    delete_action = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).delete_project(project_id)
+    # Send DELETE request
+    delete_action = ProjectsApi(API.BASE_URL, API.API_KEY).delete_project(project_id)
     assert delete_action.status_code == 204
 
-    # Confirm project was deleted
+    # Confirm the project was deleted
     sleep(5)  # wait for actual server side delete
-    get_action = ProjectsApi(TestAPI.BASE_URL, TestAPI.API_KEY).get_project(project_id)
+    # Send GET request
+    get_action = ProjectsApi(API.BASE_URL, API.API_KEY).get_project(project_id)
     assert get_action.status_code == 404

@@ -13,27 +13,25 @@ Expected Result:
     3. Work package subject is "My Task 1"
 """
 
-import requests
-from requests.auth import HTTPBasicAuth
-from config.api import TestAPI
+from config.api import API
+from framework.api.work_packages_api import WorkPackagesApi
 
 
 def test_005_get_work_package():
+    """
+    This test function sends an http 'GET' request to the server
+    and checks if response is valid
+    :return: None
+    """
     # Send GET request
-    res = requests.get(TestAPI.BASE_URL + "/work_packages/" + "34", auth=HTTPBasicAuth('apikey', TestAPI.API_KEY))
-
-    # Validating response code
-    assert res.status_code == 200, "Failed to get correct response code"
-
+    actual = WorkPackagesApi(API.BASE_URL, API.API_KEY).get_work_package(API.TEST_005["WORK_PACKAGE_ID"])
     # Parse response to json format
-    json_res = res.json()
+    actual_data = actual.json()
 
-    # Validating work package type
-    assert json_res["_embedded"]["type"]["name"] == "Task", "Failed to get correct work package type"
-
-    # Validating work package subject
-    assert json_res["subject"] == "My Task 1", "Failed to get correct work package subject"
-
-    # Validating work package subject description
-    assert json_res["description"][
-               "raw"] == "This is the first task of TestProject1", "Failed to get correct work package description"
+    # Validate status code
+    assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
+    # Validate work package type
+    assert actual_data["_embedded"]["type"]["name"] == API.TEST_005[
+        "WORK_PACKAGE_TYPE"], "Failed to get correct work package type"
+    # Validate work package subject
+    assert actual_data["subject"] == API.TEST_005["WORK_PACKAGE_SUBJECT"], "Failed to get correct work package subject"
