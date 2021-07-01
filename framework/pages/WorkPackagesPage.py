@@ -1,12 +1,6 @@
-import copy
-import time
-
-from selenium.webdriver.common.by import By
-
 from config.locators import Locators
-
-# TODO: Put locators in config file
 from infra.web_driver_extensions import WebDriverExtensions
+from selenium.webdriver.common.by import By
 
 
 class WorkPackagesPage:
@@ -15,43 +9,31 @@ class WorkPackagesPage:
         self.driver_extended = WebDriverExtensions(driver)
 
     def create_new_task(self):
-        # Click "+ Create"
-        self.driver.find_element_by_xpath('//*[@id="wrapper"]/header/div[1]/ul/li[2]').click()
-
-
-        """
-        element = driver.find_element(''')
-        element.find_element_by_xpath('.//somexpath') # When using XPath in the context of element we have to start the XPath expression with '.'.
-        """
-        # TODO: change to time.sleep() function into a waiter
-        time.sleep(1)
+        # Click "+" button
+        self.driver_extended.get_element((By.XPATH, Locators.dd_actions_xpath)).click()
         # Choose work package of type "Task"
-        self.driver.find_element_by_xpath('//*[@id="quick-add-menu"]//a[.="Task"]').click()
+        self.driver_extended.get_visible_element((By.XPATH, Locators.dd_create_task_xpath)).click()
 
     def set_task_subject(self, task_subject):
-        self.driver.find_element_by_xpath('//*[@id="wp-new-inline-edit--field-subject"]').send_keys(task_subject)
+        self.driver_extended.get_element((By.XPATH, Locators.input_task_subject_xpath)).send_keys(task_subject)
 
-    def set_task_description(self, task_description):
-        self.driver.find_element_by_xpath('//*[@class="op-uc-p"]').send_keys(task_description)
+    def set_task_description(self, task_desc):
+        self.driver_extended.get_element((By.XPATH, Locators.editor_task_desc_xpath)).send_keys(task_desc)
 
     def save_new_task(self):
-        self.driver.find_element_by_id("work-packages--edit-actions-save").click()
+        self.driver_extended.get_element((By.ID, Locators.btn_save_task_id)).click()
 
-    def get_table_row_count(self):
-        rows = self.driver_extended.get_elements(
-            (By.XPATH, "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"))
+    def count_table_rows(self):
+        rows = self.driver_extended.get_elements((By.XPATH, Locators.tb_work_packages_xpath))
         return len(rows)
 
     def get_last_table_row(self):
-        # TODO: refactor
-        last_row = self.driver.find_elements_by_xpath(
-            "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr[last()]//span//span")
+        last_row = self.driver_extended.get_element((By.XPATH, Locators.tr_last_work_package_xpath))
         last_row_data = {
-            "id": last_row[0].find_element_by_tag_name("a").text,
             "subject": last_row[3].text,
             "type": last_row[4].text
         }
         return last_row_data
 
     def click_go_back_button(self):
-        self.driver.find_element_by_xpath('//*[@id="toolbar"]/div/back-button').click()
+        self.driver_extended.get_element(Locators.btn_back_xpath).click()

@@ -1,7 +1,8 @@
-from framework.pages import HomePage
-from framework.pages.NewProjectPage import NewProjectPage
 from config.credentials import Credentials
+from framework.pages.HomePage import HomePage
+from infra.data_generator import DataGenerator
 from infra.shared_steps import SharedSteps
+from framework.pages.NewProjectPage import NewProjectPage
 
 
 def test_create_new_project(setup):
@@ -9,29 +10,19 @@ def test_create_new_project(setup):
     driver.get(Credentials.BASE_URL)
 
     SharedSteps.login_steps(driver)
-
-    home_page = HomePage(driver)
-    home_page.click_new_project()
+    SharedSteps.click_create_new_project_steps(driver)
 
     new_project_page = NewProjectPage(driver)
+    # Enter project details
     new_project_page.set_project_name(Credentials.NEW_PROJECT_NAME)
     new_project_page.click_advanced_settings()
     new_project_page.set_project_description(Credentials.NEW_PROJECT_DESCRIPTION)
     new_project_page.set_status(Credentials.NEW_PROJECT_STATUS)
+    # Save project
     new_project_page.save_new_project()
 
-    msg = driver.find_element_by_tag_name("body").text
-    print(msg)
+    actual_identifier = new_project_page.get_project_identifier()
+    print(actual_identifier)
 
-    #
-    # print(project_name)
-    #
-    # if re.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)” + “(?=.*[-+_!@#$%^&*., ?]).+$", project_name):
-    #     logger.info("**** Project name test passed ****")
-    #     driver.close()
-    #     assert True
-    # else:
-    #     logger.error("**** Project name test test failed ****")
-    #     driver.save_screenshot(TestSettings.SCREENSHOT_PATH + "009_004_new_project_page_create.png")
-    #     driver.close()
-    #     assert False
+    # TODO: Add asserts
+    assert DataGenerator.identifier_generator(Credentials.NEW_PROJECT_NAME) == actual_identifier

@@ -15,6 +15,11 @@ class SharedSteps:
         login_page.click_login()
 
     @staticmethod
+    def click_create_new_project_steps(driver):
+        home_page = HomePage(driver)
+        home_page.click_new_project_button()
+
+    @staticmethod
     def select_project_steps(driver):
         home_page = HomePage(driver)
         home_page.select_project(Credentials.HOME_PAGE_SELECTED_PROJECT)

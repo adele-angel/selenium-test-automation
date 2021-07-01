@@ -1,21 +1,21 @@
 from config.locators import Locators
+from infra.web_driver_extensions import WebDriverExtensions
+from selenium.webdriver.common.by import By
 
 
-# TODO: add waiters
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
+        self.driver_extended = WebDriverExtensions(driver)
 
     def open_login_menu(self):
-        self.driver.find_element_by_xpath(Locators.dd_login_menu_xpath).click()
+        self.driver_extended.get_element((By.XPATH, Locators.dd_login_menu_xpath)).click()
 
     def set_username(self, username):
-        self.driver.find_element_by_id(Locators.input_username_id).clear()
-        self.driver.find_element_by_id(Locators.input_username_id).send_keys(username)
+        self.driver_extended.force_clear((By.ID, Locators.input_username_id)).send_keys(username)
 
     def set_password(self, password):
-        self.driver.find_element_by_id(Locators.input_password_id).clear()
-        self.driver.find_element_by_id(Locators.input_password_id).send_keys(password)
+        self.driver_extended.force_clear((By.ID, Locators.input_password_id)).send_keys(password)
 
     def click_login(self):
-        self.driver.find_element_by_id(Locators.btn_login_id).click()
+        self.driver_extended.get_visible_element((By.ID, Locators.btn_login_id)).click()

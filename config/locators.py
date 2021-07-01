@@ -1,70 +1,37 @@
 class Locators:
     # Login Page
-    dd_login_menu_xpath = "//*[@id='wrapper']/header/div[3]/ul/li[3]"
+    dd_login_menu_xpath = "//a[.='Sign in']//ancestor::li"
     input_username_id = "username-pulldown"
     input_password_id = "password-pulldown"
     btn_login_id = "login-pulldown"
 
     # Home Page
-    btn_new_project_xpath = "//*[@id='content']/section[1]/div[2]/div[2]/a[1]"
-    dd_project_selector_xpath = '//*[@id="projects-menu"]/span'
-    dd_selected_project_xpath = "//li[contains(@class,'menu-item')]//a[.='{project_name}']"
+    btn_new_project_xpath = "//*[@id='content']//a[contains(@title,'New project')]"
+    dd_project_selector_xpath = "//*[@id='projects-menu']"
+    dd_selected_project_xpath = "//a[.='{project_name}']//ancestor::li[contains(@class,'menu-item')]"
 
     # New Project Page
     input_project_name_id = "formly_3_textInput_name_0"
-    locator_advanced_settings_xpath = '//*[@id="content"]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/formly-form/formly-field[3]/op-dynamic-field-group-wrapper/fieldset/legend/button'
-    locator_description_text_xpath = '//*[@id="formly_9_formattableInput_description_1"]/div/op-ckeditor/div/div[2]/div'
-    locator_status_selector_xpath = '//*[@id="formly_9_selectProjectStatusInput__links.status_4"]'
-    ddStatusOnNone_xpath = "/ng-dropdown-panel[1]/div[1]/div[2]/div[0]"
-    ddStatusOnTrack_xpath = '/html/body/div[2]/div[1]/main/div[2]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/formly-form/formly-field[3]/op-dynamic-field-group-wrapper/fieldset/div/formly-group/formly-field[5]/op-dynamic-field-wrapper/op-form-field/label/div[3]/op-select-project-status-input/ng-select/ng-dropdown-panel/div/div[2]/div[1]'
-    ddStatusAtRisk_xpath = '/html/body/div[2]/div[1]/main/div[2]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/formly-form/formly-field[3]/op-dynamic-field-group-wrapper/fieldset/div/formly-group/formly-field[5]/op-dynamic-field-wrapper/op-form-field/label/div[3]/op-select-project-status-input/ng-select/ng-dropdown-panel/div/div[2]/div[2]'
-    ddStatusOffTrack_xpath = "/ng-dropdown-panel[1]/div[1]/div[2]/div[3]"
-    btnSaveNewProduct_xpath = "//button[@type='submit'][@class='button -highlight']"
-    locator_save_button_xpath = '//*[@id="content"]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/div/button'
+    btn_advanced_settings_xpath = "//button[contains(text(),'Advanced settings')]"
+    editor_project_desc_xpath = "//*[@id='formly_9_formattableInput_description_1']//p"
+    dd_project_status_xpath = "//*[@id='formly_9_selectProjectStatusInput__links.status_4']"
+    dd_status_none_xpath = "//*[@id='formly_9_selectProjectStatusInput__links.status_4']//input"
+    dd_status_OnTrack_xpath = "//span[text()='On track']//parent::div"
+    dd_status_AtRisk_xpath = "//span[text()='At risk']//parent::div"
+    dd_status_OffTrack_xpath = "//span[text()='Off track']//parent::div"
+    btn_save_project_xpath = "//button[@type='submit'][@class='button -highlight']"
 
     # Project Overview Page
+    dd_project_list_id = "ui-id-9"
 
-    # locator_project_list_id = "ui-id-9"
+    # Work Packages Page
+    dd_actions_xpath = "//*[@id='wrapper']/header/div[1]/ul/li[2]"
+    dd_create_task_xpath = "//*[@id='quick-add-menu']//a[.='Task']"
+    input_task_subject_xpath = "//*[@id='wp-new-inline-edit--field-subject']"
+    editor_task_desc_xpath = "//*[@class='op-uc-p']"
+    btn_save_task_id = "work-packages--edit-actions-save"
+    tb_work_packages_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"
+    tr_last_work_package_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr[last()]//span//span"
 
-    # New Work Packages Page
-    # Login Page
-    # locator_login_xpath = '//*[@id="wrapper"]/header/div[3]/ul/li[3]/a/span'
-    # locator_username_id = "username-pulldown"
-    # locator_password_id = "password-pulldown"
-    # locator_submit_id = "login-pulldown"
-    #
-    # # Home Page
-    # locator_avatar_alt = '[alt="A A"]'
-    # locator_new_project_button_xpath = "//*[@id='content']/section[1]/div[2]/div[2]/a[1]"
-    #
-    # # NewProjectPage
-    # locator_project_name_id = "formly_3_textInput_name_0"
-
-    #
-    # # Login Page
-    # locator_login_xpath = '//*[@id="wrapper"]/header/div[3]/ul/li[3]/a/span'
-    # locator_username_id = "username-pulldown"
-    # locator_password_id = "password-pulldown"
-    # locator_submit_id = "login-pulldown"
-    #
-    # # Home Page
-    # locator_avatar_alt = '[alt="A A"]'
-    # locator_new_project_button_xpath = "//*[@id='content']/section[1]/div[2]/div[2]/a[1]"
-    #
-    # # NewProjectPage
-    # locator_project_name_id = "formly_3_textInput_name_0"
-    # locator_advanced_settings_xpath = '//*[@id="content"]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/formly-form/formly-field[3]/op-dynamic-field-group-wrapper/fieldset/legend/button'
-    # locator_description_text_xpath = '//*[@id="formly_9_formattableInput_description_1"]/div/op-ckeditor/div/div[2]/div'
-    # locator_status_selector_xpath = '//*[@id="formly_9_selectProjectStatusInput__links.status_4"]'
-    # ddStatusOnNone_xpath = "/ng-dropdown-panel[1]/div[1]/div[2]/div[0]"
-    # ddStatusOnTrack_xpath = '/html/body/div[2]/div[1]/main/div[2]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/formly-form/formly-field[3]/op-dynamic-field-group-wrapper/fieldset/div/formly-group/formly-field[5]/op-dynamic-field-wrapper/op-form-field/label/div[3]/op-select-project-status-input/ng-select/ng-dropdown-panel/div/div[2]/div[1]'
-    # ddStatusAtRisk_xpath = '/html/body/div[2]/div[1]/main/div[2]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/formly-form/formly-field[3]/op-dynamic-field-group-wrapper/fieldset/div/formly-group/formly-field[5]/op-dynamic-field-wrapper/op-form-field/label/div[3]/op-select-project-status-input/ng-select/ng-dropdown-panel/div/div[2]/div[2]'
-    # ddStatusOffTrack_xpath = "/ng-dropdown-panel[1]/div[1]/div[2]/div[3]"
-    # btnSaveNewProduct_xpath = "//button[@type='submit'][@class='button -highlight']"
-    # locator_save_button_xpath = '//*[@id="content"]/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form/div/button'
-    #
-    # # Project Overview Page
-    #
-    # # Work Packages Page
-    # locator_project_selector_xpath = '//*[@id="projects-menu"]/span'
-    # locator_project_list_id = "ui-id-9"
+    # New Work Package Page
+    btn_back_xpath = "//*[@id='toolbar']/div/back-button"
