@@ -22,10 +22,17 @@ class Credentials:
     PROJECT_OVERVIEW_PAGE_TITLE = "Overview"
 
     # Work Packages Page
-    WORK_PACKAGES_PAGE_TITLE = ""
+    WORK_PACKAGES_PAGE_TITLE = "All open | TestProject1 | OpenProject"
     NEW_TASK_TYPE = "TASK"
     NEW_TASK_SUBJECT = "My Task 1"
-    NEW_TASK_DESCRIPTION = "123 @ # $ ./ - Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend at magna eu lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean quis sodales lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus accumsan consectetur arcu, eu pellentesque nunc gravida et. Sed posuere non massa sit amet mattis. Aenean fermentum euismod purus, id elementum nisl vulputate nec. Integer quis urna molestie, interdum orci quis, molestie ligula. Suspendisse potenti. Etiam placerat, turpis id convallis sagittis, magna metus porta eros, in finibus sapien arcu ac tortor. Praesent tempus, nibh ornare pulvinar placerat, augue elit dictum arcu, sit amet ultricies erat ante fermentum metus."
+    NEW_TASK_DESCRIPTION = "123 @ # $ ./ - Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend at magna eu lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et " \
+                           "ultrices posuere cubilia curae; Aenean quis sodales lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus accumsan consectetur arcu, " \
+                           "eu pellentesque nunc gravida et. Sed posuere non massa sit amet mattis. Aenean fermentum euismod purus, id elementum nisl vulputate nec. Integer quis urna molestie, " \
+                           "interdum orci quis, molestie ligula. Suspendisse potenti. Etiam placerat, turpis id convallis sagittis, magna metus porta eros, in finibus sapien arcu ac tortor. " \
+                           "Praesent tempus, nibh ornare pulvinar placerat, augue elit dictum arcu, sit amet ultricies erat ante fermentum metus. "
 
-    # New Task Page
-    NEW_TASK_PAGE_TITLE = ""
+    # New Work Package Page
+    NEW_WORK_PACKAGE_PAGE_TITLE = "New work package | TestProject1 | OpenProject"
+
+    # Task Page
+    TASK_PAGE_TITLE = "Task: My Task 1 (#34) | TestProject1 | OpenProject"

@@ -18,6 +18,8 @@ from config.api import API
 from framework.api.projects_api import ProjectsApi
 
 
+# TODO: Maybe add an assert message helper function
+
 def test_001_get_project():
     # Send GET request
     actual = ProjectsApi(API.BASE_URL, API.API_KEY).get_project(API.TEST_001["PROJECT_ID"])

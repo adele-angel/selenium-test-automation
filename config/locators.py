@@ -8,7 +8,7 @@ class Locators:
     # Home Page
     btn_new_project_xpath = "//*[@id='content']//a[contains(@title,'New project')]"
     dd_project_selector_xpath = "//*[@id='projects-menu']"
-    dd_selected_project_xpath = "//a[.='{project_name}']//ancestor::li[contains(@class,'menu-item')]"
+    dd_selected_project_xpath = "//a[.='{}']//ancestor::li[contains(@class,'menu-item')]"
 
     # New Project Page
     input_project_name_id = "formly_3_textInput_name_0"
@@ -28,13 +28,15 @@ class Locators:
     # Work Packages Page
     dd_actions_xpath = "//*[@id='wrapper']/header/div[1]/ul/li[2]"
     dd_create_task_xpath = "//*[@id='quick-add-menu']//a[.='Task']"
-    input_task_subject_xpath = "//*[@id='wp-new-inline-edit--field-subject']"
-    editor_task_desc_xpath = "//*[@class='op-uc-p']"
-    btn_save_task_id = "work-packages--edit-actions-save"
     tb_work_packages_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"
     tr_last_work_package_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr[last()]//span//span"
 
     # New Work Package Page
+    input_task_subject_xpath = "//*[@id='wp-new-inline-edit--field-subject']"
+    editor_task_desc_xpath = "//*[@class='op-uc-p']"
+    btn_save_task_id = "work-packages--edit-actions-save"
+
+    # Task Page
     btn_back_xpath = "//*[@id='toolbar']/div/back-button"
     # btn_back_xpath = "//*[@id='menu-sidebar']/ul/li[2]/div[2]/a[2]"
     btn_back_class = "wp-show--back-button hide-when-print"

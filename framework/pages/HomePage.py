@@ -18,5 +18,4 @@ class HomePage:
         # Opening projects drop-down menu
         self.driver_extended.get_element((By.XPATH, Locators.dd_project_selector_xpath)).click()
         # Selecting project from the list
-        self.driver_extended.get_visible_element(
-            (By.XPATH, f"//a[.='{project_name}']//ancestor::li[contains(@class,'menu-item')]")).click()
+        self.driver_extended.get_visible_element((By.XPATH, Locators.dd_selected_project_xpath.format(project_name))).click()

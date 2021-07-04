@@ -22,6 +22,7 @@ from config.api import API
 from framework.api.work_packages_api import WorkPackagesApi
 
 
+# TODO: Check if project ID is necessary for deleting a work packages
 def test_008_delete_work_package():
     data = {
         "subject": API.TEST_008["WORK_PACKAGE_SUBJECT"],
