@@ -10,4 +10,4 @@ class ProjectOverviewPage:
         self.driver_extended = WebDriverExtensions(driver)
 
     def click_work_packages(self):
-        self.driver_extended.get_enabled_element((By.XPATH, Locators.dd_actions_xpath)).click()
+        self.driver_extended.get_enabled_element((By.ID, Locators.btn_menu_work_packages_id)).click()

@@ -15,7 +15,7 @@ class WorkPackagesPage:
         self.driver_extended.get_visible_element((By.XPATH, Locators.dd_create_task_xpath)).click()
 
     def set_task_subject(self, task_subject):
-        self.driver_extended.get_element((By.XPATH, Locators.input_task_subject_xpath)).send_keys(task_subject)
+        self.driver_extended.get_visible_element((By.XPATH, Locators.input_task_subject_xpath)).send_keys(task_subject)
 
     def set_task_description(self, task_desc):
         self.driver_extended.get_element((By.XPATH, Locators.editor_task_desc_xpath)).send_keys(task_desc)
@@ -28,7 +28,7 @@ class WorkPackagesPage:
         return len(rows)
 
     def get_last_table_row(self):
-        last_row = self.driver_extended.get_element((By.XPATH, Locators.tr_last_work_package_xpath))
+        last_row = self.driver_extended.get_elements((By.XPATH, Locators.tr_last_work_package_xpath))
         last_row_data = {
             "subject": last_row[3].text,
             "type": last_row[4].text
@@ -36,4 +36,4 @@ class WorkPackagesPage:
         return last_row_data
 
     def click_go_back_button(self):
-        self.driver_extended.get_element(Locators.btn_back_xpath).click()
+        self.driver_extended.get_enabled_element((By.CLASS_NAME, Locators.btn_back_class)).click()
