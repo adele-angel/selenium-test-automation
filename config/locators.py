@@ -23,6 +23,7 @@ class Locators:
 
     # Project Overview Page
     dd_project_list_id = "ui-id-9"
+    btn_menu_work_packages_id = "main-menu-work-packages-wrapper"
 
     # Work Packages Page
     dd_actions_xpath = "//*[@id='wrapper']/header/div[1]/ul/li[2]"
@@ -35,3 +36,5 @@ class Locators:
 
     # New Work Package Page
     btn_back_xpath = "//*[@id='toolbar']/div/back-button"
+    # btn_back_xpath = "//*[@id='menu-sidebar']/ul/li[2]/div[2]/a[2]"
+    btn_back_class = "wp-show--back-button hide-when-print"

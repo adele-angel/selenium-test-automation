@@ -1,10 +1,17 @@
 # selenium-test-automation [![python version: 3.9.5](https://img.shields.io/badge/python%20version-3.9.5-blue)](https://python.org/) [![pip version: 21.1.2](https://img.shields.io/badge/pip%20version-21.1.2-blue)](https://pypi.org/project/pip/)
 
-Selenium Webdriver with Python test automation project
+Selenium WebDriver with Python test automation project
 
 ## API Automation
 
 ## UI Automation
+
+## Generate Allure Reports
+
+```
+$ pytest -v -s --alluredir="{results dir}" {test dir}
+$ allure serve {results dir}
+```
 
 ## PIP Packages
 
