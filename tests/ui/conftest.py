@@ -5,6 +5,7 @@ from config.settings import Settings
 from infra.webdriver_factory import WebDriverFactory
 
 
+# TODO: configure browser selection
 @pytest.fixture(scope="function")
 def setup():
     driver = WebDriverFactory.create_driver("chrome")
