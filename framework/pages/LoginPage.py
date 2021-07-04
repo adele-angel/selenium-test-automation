@@ -19,3 +19,7 @@ class LoginPage:
 
     def click_login(self):
         self.driver_extended.get_visible_element((By.ID, Locators.btn_login_id)).click()
+
+    def can_sign_out(self):
+        # Returns True if logged in
+        return self.driver_extended.get_element((By.XPATH, Locators.link_sign_out_xpath))

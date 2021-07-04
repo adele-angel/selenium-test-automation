@@ -8,8 +8,14 @@ class DataGenerator:
     def random_str_generator(size=255, chars=string.ascii_lowercase + string.digits):
         return ''.join(random.choice(chars) for i in range(size))
 
+    # TODO: fix REGEX
     def identifier_generator(project_name):
-        identifier = re.sub('[^a-zA-Z0-9-]+', '-', project_name)
-        if identifier[-1] == "-":
-            identifier = identifier[:-1]
-        return identifier.lower()
+        identifier=project_name.lower()
+        identifier.replace("$", "dollars")
+        identifier.replace("#", "number")
+        identifier.replace("/", "number")
+        identifier.replace("%", "number")
+        # identifier = re.sub('[^a-z0-9-]+', '-', project_name)
+        # if identifier[-1] == "-":
+        #     identifier = identifier[:-1]
+        return identifier

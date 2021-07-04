@@ -29,8 +29,6 @@ def test_001_get_project():
     # Validate status code
     assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
     # Validate project name
-    assert actual_data["name"] == API.TEST_001[
-        "PROJECT_NAME"], f'Failed to get matching project name {actual_data["name"]}'
+    assert actual_data["name"] == API.TEST_001["PROJECT_NAME"], f'Failed to get matching project name {actual_data["name"]}'
     # Validate project description
-    assert actual_data["description"]["raw"] == API.TEST_001[
-        "PROJECT_DESC"], f'Failed to get matching project description {actual_data["description"]["raw"]}'
+    assert actual_data["description"]["raw"] == API.TEST_001["PROJECT_DESC"], f'Failed to get matching project description {actual_data["description"]["raw"]}'

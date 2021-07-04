@@ -29,12 +29,14 @@ def test_create_new_task(setup):
 
     work_packages_page.save_new_task()
 
-    # work_packages_page.click_go_back_button()
+    work_packages_page.click_go_back_button()
+
     new_value = work_packages_page.count_table_rows()
 
     assert initial_row_count + 1 == new_value
 
     assert Credentials.NEW_TASK_SUBJECT == (work_packages_page.get_last_table_row())["subject"]
+
     assert Credentials.NEW_TASK_TYPE == work_packages_page.get_last_table_row()["type"]
 
 #

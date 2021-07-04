@@ -6,6 +6,7 @@ class Locators:
     btn_login_id = "login-pulldown"
 
     # Home Page
+    link_sign_out_xpath = "//a[.='Sign out']"
     btn_new_project_xpath = "//*[@id='content']//a[contains(@title,'New project')]"
     dd_project_selector_xpath = "//*[@id='projects-menu']"
     dd_selected_project_xpath = "//a[.='{}']//ancestor::li[contains(@class,'menu-item')]"
@@ -15,13 +16,15 @@ class Locators:
     btn_advanced_settings_xpath = "//button[contains(text(),'Advanced settings')]"
     editor_project_desc_xpath = "//*[@id='formly_9_formattableInput_description_1']//p"
     dd_project_status_xpath = "//*[@id='formly_9_selectProjectStatusInput__links.status_4']"
-    dd_status_none_xpath = "//*[@id='formly_9_selectProjectStatusInput__links.status_4']//input"
-    dd_status_OnTrack_xpath = "//span[text()='On track']//parent::div"
-    dd_status_AtRisk_xpath = "//span[text()='At risk']//parent::div"
-    dd_status_OffTrack_xpath = "//span[text()='Off track']//parent::div"
+    dd_project_selected_status_xpath = "//span[text()='{}']//parent::div"
+    # dd_status_none_xpath = "//*[@id='formly_9_selectProjectStatusInput__links.status_4']//input"
+    # dd_status_OnTrack_xpath = "//span[text()='On track']//parent::div"
+    # dd_status_AtRisk_xpath = "//span[text()='At risk']//parent::div"
+    # dd_status_OffTrack_xpath = "//span[text()='Off track']//parent::div"
     btn_save_project_xpath = "//button[@type='submit'][@class='button -highlight']"
 
     # Project Overview Page
+    btn_project_name_id = "projects-menu"
     dd_project_list_id = "ui-id-9"
     btn_menu_work_packages_id = "main-menu-work-packages-wrapper"
 

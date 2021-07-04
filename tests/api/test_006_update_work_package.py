@@ -24,7 +24,7 @@ def test_006_update_work_package():
             "raw": API.TEST_006["WORK_PACKAGE_DESC_UPD"]
         }
     }
-    # TODO: add a get request to get lockversion, and task id
+    # TODO: add a get request to get lockVersion, and task id
 
     # Send PATCH request
     actual = WorkPackagesApi(API.BASE_URL, API.API_KEY).update_work_package(API.TEST_005["WORK_PACKAGE_ID"], data)
@@ -34,5 +34,4 @@ def test_006_update_work_package():
     # Validate status code
     assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
     # Validate work package description
-    assert actual_data["description"]["raw"] == API.TEST_006[
-        "WORK_PACKAGE_DESC_UPD"], f'Failed to get matching work package description {actual_data["description"]["raw"]}'
+    assert actual_data["description"]["raw"] == API.TEST_006["WORK_PACKAGE_DESC_UPD"], f'Failed to get matching work package description {actual_data["description"]["raw"]}'

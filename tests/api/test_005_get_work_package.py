@@ -31,7 +31,6 @@ def test_005_get_work_package():
     # Validate status code
     assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
     # Validate work package type
-    assert actual_data["_embedded"]["type"]["name"] == API.TEST_005[
-        "WORK_PACKAGE_TYPE"], "Failed to get correct work package type"
+    assert actual_data["_embedded"]["type"]["name"] == API.TEST_005["WORK_PACKAGE_TYPE"], "Failed to get correct work package type"
     # Validate work package subject
     assert actual_data["subject"] == API.TEST_005["WORK_PACKAGE_SUBJECT"], "Failed to get correct work package subject"

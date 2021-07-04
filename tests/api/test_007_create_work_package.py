@@ -21,6 +21,9 @@ from framework.api.work_packages_api import WorkPackagesApi
 def test_007_create_work_package():
     data = {
         "subject": API.TEST_007["WORK_PACKAGE_SUBJECT"],
+        "description": {
+            "raw": API.TEST_007["WORK_PACKAGE_DESC"]
+        },
         "_links": {
             "project": {
                 "href": f'/api/v3/projects/{API.TEST_001["PROJECT_ID"]}'
@@ -35,4 +38,5 @@ def test_007_create_work_package():
 
     # Validate status code
     assert actual.status_code == 201, "Failed to get correct response code"
+    # Validate work package subject
     assert actual_data["subject"] == API.TEST_007["WORK_PACKAGE_SUBJECT"], "Failed to get correct work package subject"

@@ -2,13 +2,13 @@ class API:
     # API Credentials
     PORT = "8080"
     BASE_URL = f"http://localhost:{PORT}"
-    API_KEY = "9c99891fc8ae112baedc55f8c324d7d7ee51771520a454353822ed5d2844a380"
+    API_KEY = "75c3f718c3d3dfea0147d868b4230f768eafc7ddca038a1eac67c67f62bb25f6"
 
     # Test 001 - API - Get Project by ID
     TEST_001 = {
         "PROJECT_ID": "4",
         "PROJECT_NAME": "TestProject1",
-        "PROJECT_DESC": "This is the first test project!"
+        "PROJECT_DESC": "This is the first test project"
     }
 
     # Test 002 - API - Update Project
@@ -33,7 +33,8 @@ class API:
     TEST_005 = {
         "WORK_PACKAGE_ID": "34",
         "WORK_PACKAGE_TYPE": "Task",
-        "WORK_PACKAGE_SUBJECT": "My Task 1"
+        "WORK_PACKAGE_SUBJECT": "My Task 1",
+        "WORK_PACKAGE_DESC": "This is the first test work package"
     }
 
     # Test 006 - API - Update Work Package

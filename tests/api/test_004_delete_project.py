@@ -32,15 +32,18 @@ def test_004_delete_project():
     actual = ProjectsApi(API.BASE_URL, API.API_KEY).create_project(data)
     actual_data = actual.json()
     project_id = actual_data["id"]
+    # Validate status code
     assert actual.status_code == 201, project_id
 
     # Delete newly created project
     # Send DELETE request
     delete_action = ProjectsApi(API.BASE_URL, API.API_KEY).delete_project(project_id)
+    # Validate status code
     assert delete_action.status_code == 204
 
     # Confirm the project was deleted
     sleep(5)  # wait for actual server side delete
     # Send GET request
     get_action = ProjectsApi(API.BASE_URL, API.API_KEY).get_project(project_id)
+    # Validate status code
     assert get_action.status_code == 404
