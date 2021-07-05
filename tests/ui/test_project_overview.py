@@ -8,7 +8,7 @@ from infra.shared_steps import SharedSteps
 @allure.title('Test navigation into "Project Overview" page')
 @allure.severity(allure.severity_level.NORMAL)
 @pytest.mark.smoke
-def test_verify_project_name(setup):
+def test_project_overview_page_title(setup):
     with allure.step('setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
@@ -24,7 +24,7 @@ def test_verify_project_name(setup):
 
 
 @allure.title('Test for matching project name')
-@allure.severity(allure.severity_level.NORMAL)
+@allure.severity(allure.severity_level.BLOCKER)
 @pytest.mark.smoke
 def test_verify_project_name(setup):
     with allure.step('setup driver'):

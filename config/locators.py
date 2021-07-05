@@ -37,6 +37,7 @@ class Locators:
     # dd_create_task_xpath = "//*[@id='quick-add-menu']//a[.='Task']"
     tb_work_packages_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"
     tr_last_work_package_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr[last()]//span//span"
+    form_new_task_class = "work-packages--details work-packages--new"
     input_task_subject_xpath = "//*[@id='wp-new-inline-edit--field-subject']"
     editor_task_desc_xpath = "//*[@class='op-uc-p']"
     btn_save_task_id = "work-packages--edit-actions-save"

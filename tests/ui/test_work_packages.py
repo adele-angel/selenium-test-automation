@@ -8,7 +8,7 @@ from infra.shared_steps import SharedSteps
 @allure.title('Test navigation into "Work Packages" page')
 @allure.severity(allure.severity_level.NORMAL)
 @pytest.mark.smoke
-def test_verify_project_name(setup):
+def test_work_package_page_title(setup):
     with allure.step('setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
@@ -64,15 +64,13 @@ def test_create_new_task(setup):
         work_packages_page.save_new_task()
 
     with allure.step("Check if webpage title is correct"):
-        assert driver.title == Credentials.CREATED_TASK_PAGE_TITLE.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
-
-    with allure.step('Go back to work packages table and count the rows'):
-        work_packages_page.click_go_back_button()
-        new_value = work_packages_page.count_table_rows()
+        last_row_data = work_packages_page.get_last_table_row()
+        assert driver.title == Credentials.CREATED_TASK_PAGE_TITLE.format(last_row_data["subject"], last_row_data["id"], Credentials.HOME_PAGE_SELECTED_PROJECT)
 
     with allure.step('Verify that a new row was added to the work packages table'):
-        assert initial_row_count + 1 == new_value
+        current_row_count = work_packages_page.count_table_rows()
+        assert initial_row_count + 1 == current_row_count
 
     with allure.step('Verify the subject and type of the last table row'):
-        assert Credentials.NEW_TASK_SUBJECT == work_packages_page.get_last_table_row()["subject"]
-        assert Credentials.NEW_TASK_TYPE == work_packages_page.get_last_table_row()["type"]
+        assert Credentials.NEW_TASK_SUBJECT == last_row_data["subject"]
+        assert Credentials.NEW_TASK_TYPE == last_row_data["type"]

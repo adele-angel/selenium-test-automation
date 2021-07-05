@@ -9,13 +9,13 @@ class NewProjectPage:
         self.driver_extended = WebDriverExtensions(driver)
 
     def set_project_name(self, project_name):
-        self.driver_extended.get_visible_element((By.ID, Locators.input_project_name_id)).send_keys(project_name)
+        self.driver_extended.get_enabled_element((By.ID, Locators.input_project_name_id)).send_keys(project_name)
 
     def click_advanced_settings(self):
         self.driver_extended.get_element((By.XPATH, Locators.btn_advanced_settings_xpath)).click()
 
     def set_project_description(self, project_desc):
-        self.driver_extended.get_visible_element((By.XPATH, Locators.editor_project_desc_xpath)).send_keys(project_desc)
+        self.driver_extended.get_enabled_element((By.XPATH, Locators.editor_project_desc_xpath)).send_keys(project_desc)
 
     def set_status(self, status):
         # Opening project status drop-down menu
@@ -25,6 +25,7 @@ class NewProjectPage:
 
     def save_new_project(self):
         self.driver_extended.get_element((By.XPATH, Locators.btn_save_project_xpath)).click()
+        self.driver_extended.until_not_exists_or_hidden((By.XPATH, Locators.btn_save_project_xpath))
 
     def get_project_identifier(self):
         return self.driver.current_url.split("/")[4]

@@ -13,6 +13,7 @@ class WorkPackagesPage:
         self.driver_extended.get_element((By.CLASS_NAME, Locators.dd_create_work_package_class)).click()
         # Choose work package of type "Task"
         self.driver_extended.get_visible_element((By.XPATH, Locators.dd_create_task_xpath)).click()
+        self.driver_extended.until_visible((By.CLASS_NAME, Locators.form_new_task_class))
 
     def get_work_package_form_title(self):
         work_package_status = self.driver_extended.get_element((By.CLASS_NAME, Locators.edit_work_package_status_class)).text
@@ -27,6 +28,7 @@ class WorkPackagesPage:
 
     def save_new_task(self):
         self.driver_extended.get_element((By.ID, Locators.btn_save_task_id)).click()
+        self.driver_extended.until_not_exists_or_hidden((By.ID, Locators.btn_save_task_id))
 
     def count_table_rows(self):
         rows = self.driver_extended.get_elements((By.XPATH, Locators.tb_work_packages_xpath))
@@ -34,12 +36,11 @@ class WorkPackagesPage:
 
     def get_last_table_row(self):
         last_row = self.driver_extended.get_elements((By.XPATH, Locators.tr_last_work_package_xpath))
-        last_row_data = {
-            "id": last_row.find_element_by_[0].text,
+        return {
+            "id": last_row[0].find_element_by_tag_name("a").text,
             "subject": last_row[3].text,
             "type": last_row[4].text
         }
-        return last_row_data
 
     def click_go_back_button(self):
         self.driver_extended.get_enabled_element((By.CLASS_NAME, Locators.btn_back_class)).click()

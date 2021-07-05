@@ -47,6 +47,6 @@ def test_select_project(setup):
 
     with allure.step('Verify the value of the "identifier" field'):
         # Note: OpenProject's identifier field doesn't match project requirements for special characters
-        assert identifier_generator(Credentials.NEW_PROJECT_NAME) in driver.current_url
+        assert identifier_generator(Credentials.HOME_PAGE_SELECTED_PROJECT) in driver.current_url
         # Another option to verify if navigation to project's page
         assert f'title="{Credentials.HOME_PAGE_SELECTED_PROJECT}"' in driver.page_source

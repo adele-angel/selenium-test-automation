@@ -10,7 +10,7 @@ from infra.string_util import identifier_generator
 @allure.title('Test navigation into "New Project" page')
 @allure.severity(allure.severity_level.NORMAL)
 @pytest.mark.smoke
-def test_verify_project_name(setup):
+def test_new_project_page_title(setup):
     with allure.step('setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
