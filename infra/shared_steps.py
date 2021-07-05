@@ -28,3 +28,8 @@ class SharedSteps:
     def goto_work_packages_steps(driver):
         project_overview_page = ProjectOverviewPage(driver)
         project_overview_page.click_work_packages()
+
+    @staticmethod
+    def compare_project_button_text_steps(driver):
+        project_overview_page = ProjectOverviewPage(driver)
+        return project_overview_page.get_project_name_from_button()

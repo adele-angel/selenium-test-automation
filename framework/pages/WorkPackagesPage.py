@@ -9,10 +9,15 @@ class WorkPackagesPage:
         self.driver_extended = WebDriverExtensions(driver)
 
     def create_new_task(self):
-        # Click "+" button
-        self.driver_extended.get_element((By.XPATH, Locators.dd_actions_xpath)).click()
+        # Click "+ Create" button
+        self.driver_extended.get_element((By.CLASS_NAME, Locators.dd_create_work_package_class)).click()
         # Choose work package of type "Task"
         self.driver_extended.get_visible_element((By.XPATH, Locators.dd_create_task_xpath)).click()
+
+    def get_work_package_form_title(self):
+        work_package_status = self.driver_extended.get_element((By.CLASS_NAME, Locators.edit_work_package_status_class)).text
+        work_package_type = self.driver_extended.get_element((By.CLASS_NAME, Locators.edit_work_package_type_class)).text
+        return f"{work_package_status} {work_package_type}"
 
     def set_task_subject(self, task_subject):
         self.driver_extended.get_visible_element((By.XPATH, Locators.input_task_subject_xpath)).send_keys(task_subject)
@@ -30,6 +35,7 @@ class WorkPackagesPage:
     def get_last_table_row(self):
         last_row = self.driver_extended.get_elements((By.XPATH, Locators.tr_last_work_package_xpath))
         last_row_data = {
+            "id": last_row.find_element_by_[0].text,
             "subject": last_row[3].text,
             "type": last_row[4].text
         }

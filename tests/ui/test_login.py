@@ -7,8 +7,9 @@ from framework.pages.LoginPage import LoginPage
 @allure.title("Test OpenProject sign in page title")
 @allure.severity(allure.severity_level.MINOR)
 def test_login_page_title(setup):
-    driver = setup
-    driver.get(Credentials.BASE_URL)
+    with allure.step("setup driver"):
+        driver = setup
+        driver.get(Credentials.BASE_URL)
 
     with allure.step("Check if webpage title is correct"):
         assert driver.title == Credentials.LOGIN_PAGE_TITLE
@@ -20,10 +21,12 @@ def test_login_page_title(setup):
 @pytest.mark.test_009
 @pytest.mark.test_010
 def test_login(setup):
-    driver = setup
-    driver.get(Credentials.BASE_URL)
+    with allure.step("setup driver"):
+        driver = setup
+        driver.get(Credentials.BASE_URL)
 
-    login_page = LoginPage(driver)
+    with allure.step("Create a loginPage instance"):
+        login_page = LoginPage(driver)
 
     with allure.step("Opening 'sign in' menu"):
         login_page.open_login_menu()

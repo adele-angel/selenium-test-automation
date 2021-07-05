@@ -11,3 +11,7 @@ class ProjectOverviewPage:
 
     def click_work_packages(self):
         self.driver_extended.get_enabled_element((By.ID, Locators.btn_menu_work_packages_id)).click()
+
+    def get_project_name_from_button(self):
+        self.driver_extended.until_not_exists_or_hidden((By.XPATH, Locators.btn_save_project_xpath))
+        return self.driver_extended.get_element((By.XPATH, Locators.btn_project_name_xpath)).text

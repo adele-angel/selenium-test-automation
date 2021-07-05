@@ -24,22 +24,22 @@ class Locators:
     btn_save_project_xpath = "//button[@type='submit'][@class='button -highlight']"
 
     # Project Overview Page
-    btn_project_name_id = "projects-menu"
+    btn_project_name_xpath = "//*[@id='projects-menu']/span"
     dd_project_list_id = "ui-id-9"
     btn_menu_work_packages_id = "main-menu-work-packages-wrapper"
 
     # Work Packages Page
-    dd_actions_xpath = "//*[@id='wrapper']/header/div[1]/ul/li[2]"
-    dd_create_task_xpath = "//*[@id='quick-add-menu']//a[.='Task']"
+    dd_create_work_package_class = "wp-create-button"
+    dd_create_task_xpath = "//*[@id='types-context-menu']//li[.='Task']"
+    edit_work_package_type_class = "__hl_inline_type_1 inline-edit--display-field type -required -editable"
+    edit_work_package_status_class = "inline-edit--display-field status -required -editable"
+    # dd_actions_xpath = "//*[@id='wrapper']/header/div[1]/ul/li[2]"
+    # dd_create_task_xpath = "//*[@id='quick-add-menu']//a[.='Task']"
     tb_work_packages_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"
     tr_last_work_package_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr[last()]//span//span"
-
-    # New Work Package Page
     input_task_subject_xpath = "//*[@id='wp-new-inline-edit--field-subject']"
     editor_task_desc_xpath = "//*[@class='op-uc-p']"
     btn_save_task_id = "work-packages--edit-actions-save"
-
-    # Task Page
     btn_back_xpath = "//*[@id='toolbar']/div/back-button"
     # btn_back_xpath = "//*[@id='menu-sidebar']/ul/li[2]/div[2]/a[2]"
     btn_back_class = "wp-show--back-button hide-when-print"

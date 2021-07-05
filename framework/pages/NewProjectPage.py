@@ -1,4 +1,3 @@
-from config.credentials import Credentials
 from config.locators import Locators
 from infra.web_driver_extensions import WebDriverExtensions
 from selenium.webdriver.common.by import By
@@ -26,9 +25,6 @@ class NewProjectPage:
 
     def save_new_project(self):
         self.driver_extended.get_element((By.XPATH, Locators.btn_save_project_xpath)).click()
-
-    def get_project_name_from_button(self, project_name):
-        return self.driver_extended.get_visible_element((By.LINK_TEXT, project_name)).text
 
     def get_project_identifier(self):
         return self.driver.current_url.split("/")[4]

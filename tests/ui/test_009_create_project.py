@@ -16,13 +16,14 @@ Steps:
 import pytest
 import allure
 from config.credentials import Credentials
-from framework.pages.HomePage import HomePage
 from framework.pages.NewProjectPage import NewProjectPage
 from infra.shared_steps import SharedSteps
+from infra.string_util import is_unique_str, identifier_generator
 
 
-@allure.title("Test Creating A New Project")
+@allure.title('Test Creating A New Project')
 @allure.severity(allure.severity_level.NORMAL)
+@pytest.mark.test_009
 @pytest.mark.project
 def test_009_create_project(setup):
     with allure.step("setup driver"):
@@ -35,12 +36,12 @@ def test_009_create_project(setup):
 
     # step 2
     with allure.step('On "Home" page, click "+ Project" green button'):
-        home_page = HomePage(driver)
-        home_page.click_new_project_button()
+        SharedSteps.click_create_new_project_steps(driver)
 
     # step 3
-    with allure.step('On the "New project" page, type a unique value for the project name'):
+    with allure.step('Create a NewProjectPage instance'):
         new_project_page = NewProjectPage(driver)
+    with allure.step('On the "New project" page, type a unique value for the project name'):
         new_project_page.set_project_name(Credentials.NEW_PROJECT_NAME)
 
     # step 4
@@ -52,8 +53,8 @@ def test_009_create_project(setup):
         new_project_page.set_project_description(Credentials.NEW_PROJECT_DESCRIPTION)
 
     # step 6
-    with allure.step('Verify the value of the "Identifier" field'):
-        pass
+    with allure.step('Verify project name is a unique string'):
+        assert is_unique_str(Credentials.NEW_PROJECT_NAME)
 
     # step 7
     with allure.step('Select status "On track"'):
@@ -65,7 +66,10 @@ def test_009_create_project(setup):
 
     # step 9
     with allure.step('On "Work packages" page, top left corner: verify the text on the button'):
-        pass
+        assert SharedSteps.compare_project_button_text_steps(driver) == Credentials.NEW_PROJECT_NAME
 
-    # TODO: Do ASSERT On "Work packages" page, top left corner: verify the text on the button
-    # TODO: Do ASSERT - Button text matches the project name entered in step 3
+    # step 10*
+    with allure.step('Verify the value of the "Identifier" field'):
+        # Note 1: can't verify project's identifier before saving the new project (original step 6)
+        # Note 2: OpenProject's identifier field doesn't match project requirements for special characters
+        assert identifier_generator(Credentials.NEW_PROJECT_NAME) in driver.current_url

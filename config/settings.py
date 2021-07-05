@@ -9,3 +9,7 @@ class Settings:
 
     # Environment
     ENV = "dev"
+
+    # Reports
+    REPORTS_PATH = ".\\reports\\"
+    SCREENSHOTS_PATH = ".\\screenshots\\"

@@ -25,8 +25,9 @@ from infra.shared_steps import SharedSteps
 
 @allure.title("Test Creating A New Task")
 @allure.severity(allure.severity_level.NORMAL)
+@pytest.mark.test_010
 @pytest.mark.task
-def test_009_create_task(setup):
+def test_010_create_task(setup):
     with allure.step("setup driver"):
         driver = setup
         driver.get(Credentials.BASE_URL)
@@ -42,8 +43,9 @@ def test_009_create_task(setup):
     # step 3
     with allure.step('On the "Project Overview" page, left side menu, click "Work packages"'):
         SharedSteps.goto_work_packages_steps(driver)
-    with allure.step('Note the number of rows displayed in the work packages table'):
+    with allure.step('Create a WorkPackagesPage instance'):
         work_packages_page = WorkPackagesPage(driver)
+    with allure.step('Note the number of rows displayed in the work packages table'):
         initial_row_count = work_packages_page.count_table_rows()
 
     # step 4
@@ -52,8 +54,7 @@ def test_009_create_task(setup):
 
     # step 5
     with allure.step('Verify the text "New TASK" on top of the form that got opened on the right side'):
-        pass
-        # TODO: ASSERT The title of the form is "New TASK"
+        assert work_packages_page.get_work_package_form_title() == Credentials.WORK_PACKAGE_FORM_TITLE
 
     # step 6
     with allure.step('Type unique strings into the subject and description boxes'):
