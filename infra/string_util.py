@@ -1,6 +1,19 @@
 import re
 
 
+def clean_spaces(txt):
+    """
+    Removes multiple spaces from a given string.
+
+    Args:
+        txt (str): given string.
+
+    Returns:
+        str: updated string.
+    """
+    return " ".join(txt.split())
+
+
 def is_unique_str(txt):
     """
     Checks if given string is unique.
@@ -15,7 +28,6 @@ def is_unique_str(txt):
     return re.match("[a-zA-Z0-9,\/@#$% ]+", txt)
 
 
-# TODO: fix REGEX
 def identifier_generator(project_name):
     """
     Generates an identifier from a given project name.
