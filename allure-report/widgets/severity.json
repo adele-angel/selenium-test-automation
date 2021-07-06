@@ -1,0 +1,201 @@
+[ {
+  "uid" : "6a2387eada97ff1",
+  "name" : "Test navigation into \"New Project\" page",
+  "time" : {
+    "start" : 1625613261819,
+    "stop" : 1625613264937,
+    "duration" : 3118
+  },
+  "status" : "passed",
+  "severity" : "critical"
+}, {
+  "uid" : "bfac07523b9d1740",
+  "name" : "Test logging into OpenProject app",
+  "time" : {
+    "start" : 1625613281028,
+    "stop" : 1625613284940,
+    "duration" : 3912
+  },
+  "status" : "passed",
+  "severity" : "critical"
+}, {
+  "uid" : "f0c175cdd3ace742",
+  "name" : "Test 002 - API - Update Project",
+  "time" : {
+    "start" : 1625613221092,
+    "stop" : 1625613221136,
+    "duration" : 44
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c8808e9fe31274c",
+  "name" : "Test creating a new task",
+  "time" : {
+    "start" : 1625613330790,
+    "stop" : 1625613343839,
+    "duration" : 13049
+  },
+  "status" : "passed",
+  "severity" : "critical"
+}, {
+  "uid" : "d0fb70943e5d22cc",
+  "name" : "Test 001 - API - Get Project by ID",
+  "time" : {
+    "start" : 1625613221051,
+    "stop" : 1625613221085,
+    "duration" : 34
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "66fd3dadb1a1f90c",
+  "name" : "Test OpenProject sign in page title",
+  "time" : {
+    "start" : 1625613276004,
+    "stop" : 1625613277582,
+    "duration" : 1578
+  },
+  "status" : "passed",
+  "severity" : "minor"
+}, {
+  "uid" : "f70e6a9f217c51b",
+  "name" : "Test for matching project name",
+  "time" : {
+    "start" : 1625613314089,
+    "stop" : 1625613319025,
+    "duration" : 4936
+  },
+  "status" : "passed",
+  "severity" : "blocker"
+}, {
+  "uid" : "c18a34ee0a1a89bf",
+  "name" : "Test 007 - API - Create Work Package",
+  "time" : {
+    "start" : 1625613226849,
+    "stop" : 1625613227064,
+    "duration" : 215
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3bf5ea648f4dab53",
+  "name" : "Test 010 - UI - Create Task",
+  "time" : {
+    "start" : 1625613245137,
+    "stop" : 1625613258352,
+    "duration" : 13215
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6f3cc4d7510b9ff1",
+  "name" : "Test navigation into \"Project Overview\" page",
+  "time" : {
+    "start" : 1625613306834,
+    "stop" : 1625613310644,
+    "duration" : 3810
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e8d0c5fa9f9484bf",
+  "name" : "Test navigation into \"New Project\" page",
+  "time" : {
+    "start" : 1625613288415,
+    "stop" : 1625613291746,
+    "duration" : 3331
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6933c42ab113c998",
+  "name" : "Test 003 - API - Create Project",
+  "time" : {
+    "start" : 1625613221156,
+    "stop" : 1625613221243,
+    "duration" : 87
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "db6e565299289b74",
+  "name" : "Test 005 - API - Get Work Package by ID",
+  "time" : {
+    "start" : 1625613226381,
+    "stop" : 1625613226528,
+    "duration" : 147
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "74636d36e71ebe7c",
+  "name" : "Test navigation into \"Work Packages\" page",
+  "time" : {
+    "start" : 1625613322556,
+    "stop" : 1625613327281,
+    "duration" : 4725
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "885bd2486623c404",
+  "name" : "Test 008 - API - Delete Work Package",
+  "time" : {
+    "start" : 1625613227064,
+    "stop" : 1625613232381,
+    "duration" : 5317
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cbc470043e8b161c",
+  "name" : "Test 004 - API - Delete Project",
+  "time" : {
+    "start" : 1625613221243,
+    "stop" : 1625613226381,
+    "duration" : 5138
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a7634a3a3ba5b9fc",
+  "name" : "Test navigation into a selected project page",
+  "time" : {
+    "start" : 1625613268739,
+    "stop" : 1625613272552,
+    "duration" : 3813
+  },
+  "status" : "passed",
+  "severity" : "critical"
+}, {
+  "uid" : "17a44f705b0efaf6",
+  "name" : "Test creating a new project",
+  "time" : {
+    "start" : 1625613295259,
+    "stop" : 1625613303274,
+    "duration" : 8015
+  },
+  "status" : "passed",
+  "severity" : "critical"
+}, {
+  "uid" : "985be486d2ae0eaa",
+  "name" : "Test 006 - API - Update Work Package",
+  "time" : {
+    "start" : 1625613226528,
+    "stop" : 1625613226849,
+    "duration" : 321
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "18d479138e68c946",
+  "name" : "Test 009 - UI - Create Project",
+  "time" : {
+    "start" : 1625613233679,
+    "stop" : 1625613241634,
+    "duration" : 7955
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

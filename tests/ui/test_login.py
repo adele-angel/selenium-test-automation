@@ -41,4 +41,4 @@ def test_login(setup):
         login_page.click_login()
 
     with allure.step('Validating login by checking if sign out action exists'):
-        assert login_page.can_sign_out(), get_screenshot(driver, "login", "login")
+        assert login_page.can_sign_out() is None, get_screenshot(driver, "login", "login")

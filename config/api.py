@@ -2,7 +2,7 @@ class API:
     # API Credentials
     PORT = "8080"
     BASE_URL = f"http://localhost:{PORT}"
-    API_KEY = "e23c7eda8a30ee9e5a02aac2c184c8dd0f60508af196291dc2d8a135d68f04f3"
+    API_KEY = "7db582197b3345ed93e5836ccc82069e9933fc5d35aa8b8ec65704c46b51d0e8"
 
     # Test 001 - API - Get Project by ID
     TEST_001 = {

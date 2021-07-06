@@ -41,4 +41,4 @@ class LoginPage:
         Returns:
             bool: True if logged in to OpenProject, else False
         """
-        return bool(self.driver_extended.until_not_exists_or_hidden((By.XPATH, Locators.link_sign_out_xpath)))
+        return self.driver_extended.until_not_exists_or_hidden((By.XPATH, Locators.link_sign_out_xpath))

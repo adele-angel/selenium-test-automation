@@ -1,0 +1,19 @@
+[ {
+  "values" : [ "selenium-test-automation" ],
+  "name" : "Project"
+}, {
+  "values" : [ "Development" ],
+  "name" : "Stand"
+}, {
+  "values" : [ "Adele Angel" ],
+  "name" : "Tester"
+}, {
+  "values" : [ "3.9.6" ],
+  "name" : "Python"
+}, {
+  "values" : [ "21.1.3" ],
+  "name" : "PIP"
+}, {
+  "values" : [ "2.14.0" ],
+  "name" : "Allure"
+} ]

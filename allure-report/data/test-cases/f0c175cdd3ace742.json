@@ -1,0 +1,56 @@
+{
+  "uid" : "f0c175cdd3ace742",
+  "name" : "Test 002 - API - Update Project",
+  "fullName" : "tests.api.test_002_update_project#test_002_update_project",
+  "historyId" : "4f51a433342df8b74e3634b87f4ffe11",
+  "time" : {
+    "start" : 1625613221092,
+    "stop" : 1625613221136,
+    "duration" : 44
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "t002"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests.api"
+  }, {
+    "name" : "suite",
+    "value" : "test_002_update_project"
+  }, {
+    "name" : "host",
+    "value" : "MaShu-Laptop"
+  }, {
+    "name" : "thread",
+    "value" : "7364-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.api.test_002_update_project"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "t002" ]
+  },
+  "source" : "f0c175cdd3ace742.json",
+  "parameterValues" : [ ]
+}

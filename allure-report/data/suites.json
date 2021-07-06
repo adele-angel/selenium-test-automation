@@ -1,0 +1,333 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "tests.api",
+    "children" : [ {
+      "name" : "test_001_get_project",
+      "children" : [ {
+        "name" : "Test 001 - API - Get Project by ID",
+        "uid" : "d0fb70943e5d22cc",
+        "parentUid" : "c8b27f7d0672b647f66362bf8568223c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613221051,
+          "stop" : 1625613221085,
+          "duration" : 34
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "c8b27f7d0672b647f66362bf8568223c"
+    }, {
+      "name" : "test_002_update_project",
+      "children" : [ {
+        "name" : "Test 002 - API - Update Project",
+        "uid" : "f0c175cdd3ace742",
+        "parentUid" : "893da9408c6dcbb3f3ae71902d90123f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613221092,
+          "stop" : 1625613221136,
+          "duration" : 44
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "893da9408c6dcbb3f3ae71902d90123f"
+    }, {
+      "name" : "test_003_create_project",
+      "children" : [ {
+        "name" : "Test 003 - API - Create Project",
+        "uid" : "6933c42ab113c998",
+        "parentUid" : "42a3df0bb58070eefeea7ff687887b3b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613221156,
+          "stop" : 1625613221243,
+          "duration" : 87
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "42a3df0bb58070eefeea7ff687887b3b"
+    }, {
+      "name" : "test_004_delete_project",
+      "children" : [ {
+        "name" : "Test 004 - API - Delete Project",
+        "uid" : "cbc470043e8b161c",
+        "parentUid" : "b0a09ede482eff76aa9a2f8da5c9e60c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613221243,
+          "stop" : 1625613226381,
+          "duration" : 5138
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "b0a09ede482eff76aa9a2f8da5c9e60c"
+    }, {
+      "name" : "test_005_get_work_package",
+      "children" : [ {
+        "name" : "Test 005 - API - Get Work Package by ID",
+        "uid" : "db6e565299289b74",
+        "parentUid" : "001bc89631188962879892d4503ea4cb",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613226381,
+          "stop" : 1625613226528,
+          "duration" : 147
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "001bc89631188962879892d4503ea4cb"
+    }, {
+      "name" : "test_006_update_work_package",
+      "children" : [ {
+        "name" : "Test 006 - API - Update Work Package",
+        "uid" : "985be486d2ae0eaa",
+        "parentUid" : "ed51e9d0d788e9a599db973e43609c2c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613226528,
+          "stop" : 1625613226849,
+          "duration" : 321
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "ed51e9d0d788e9a599db973e43609c2c"
+    }, {
+      "name" : "test_007_create_work_package",
+      "children" : [ {
+        "name" : "Test 007 - API - Create Work Package",
+        "uid" : "c18a34ee0a1a89bf",
+        "parentUid" : "0d2de924c458c54756849340a143eca3",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613226849,
+          "stop" : 1625613227064,
+          "duration" : 215
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "0d2de924c458c54756849340a143eca3"
+    }, {
+      "name" : "test_008_delete_work_package",
+      "children" : [ {
+        "name" : "Test 008 - API - Delete Work Package",
+        "uid" : "885bd2486623c404",
+        "parentUid" : "6741378a704abbf86b31eca1459648ca",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613227064,
+          "stop" : 1625613232381,
+          "duration" : 5317
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "6741378a704abbf86b31eca1459648ca"
+    } ],
+    "uid" : "03df66830909f413b6e5a7faed621a0d"
+  }, {
+    "name" : "tests.ui",
+    "children" : [ {
+      "name" : "test_009_create_project",
+      "children" : [ {
+        "name" : "Test 009 - UI - Create Project",
+        "uid" : "18d479138e68c946",
+        "parentUid" : "55a88718ede790813b36c21c930452b1",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613233679,
+          "stop" : 1625613241634,
+          "duration" : 7955
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "55a88718ede790813b36c21c930452b1"
+    }, {
+      "name" : "test_010_create_task",
+      "children" : [ {
+        "name" : "Test 010 - UI - Create Task",
+        "uid" : "3bf5ea648f4dab53",
+        "parentUid" : "be91a50b9a7e90dff7f910449f869f6c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613245137,
+          "stop" : 1625613258352,
+          "duration" : 13215
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "be91a50b9a7e90dff7f910449f869f6c"
+    }, {
+      "name" : "test_home",
+      "children" : [ {
+        "name" : "Test navigation into \"New Project\" page",
+        "uid" : "6a2387eada97ff1",
+        "parentUid" : "85d04a60ac3b23b710401a29d8a88b74",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613261819,
+          "stop" : 1625613264937,
+          "duration" : 3118
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Test navigation into a selected project page",
+        "uid" : "a7634a3a3ba5b9fc",
+        "parentUid" : "85d04a60ac3b23b710401a29d8a88b74",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613268739,
+          "stop" : 1625613272552,
+          "duration" : 3813
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "85d04a60ac3b23b710401a29d8a88b74"
+    }, {
+      "name" : "test_login",
+      "children" : [ {
+        "name" : "Test OpenProject sign in page title",
+        "uid" : "66fd3dadb1a1f90c",
+        "parentUid" : "4b0692450e3380276e0df9f8e493e707",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613276004,
+          "stop" : 1625613277582,
+          "duration" : 1578
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Test logging into OpenProject app",
+        "uid" : "bfac07523b9d1740",
+        "parentUid" : "4b0692450e3380276e0df9f8e493e707",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613281028,
+          "stop" : 1625613284940,
+          "duration" : 3912
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "4b0692450e3380276e0df9f8e493e707"
+    }, {
+      "name" : "test_new_project",
+      "children" : [ {
+        "name" : "Test navigation into \"New Project\" page",
+        "uid" : "e8d0c5fa9f9484bf",
+        "parentUid" : "7ac04c96e92da8193ac4067db1831e64",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613288415,
+          "stop" : 1625613291746,
+          "duration" : 3331
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Test creating a new project",
+        "uid" : "17a44f705b0efaf6",
+        "parentUid" : "7ac04c96e92da8193ac4067db1831e64",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613295259,
+          "stop" : 1625613303274,
+          "duration" : 8015
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "7ac04c96e92da8193ac4067db1831e64"
+    }, {
+      "name" : "test_project_overview",
+      "children" : [ {
+        "name" : "Test navigation into \"Project Overview\" page",
+        "uid" : "6f3cc4d7510b9ff1",
+        "parentUid" : "8b3aa1bff04ab1f420b4628dadf0cc1e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613306834,
+          "stop" : 1625613310644,
+          "duration" : 3810
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Test for matching project name",
+        "uid" : "f70e6a9f217c51b",
+        "parentUid" : "8b3aa1bff04ab1f420b4628dadf0cc1e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613314089,
+          "stop" : 1625613319025,
+          "duration" : 4936
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "8b3aa1bff04ab1f420b4628dadf0cc1e"
+    }, {
+      "name" : "test_work_packages",
+      "children" : [ {
+        "name" : "Test navigation into \"Work Packages\" page",
+        "uid" : "74636d36e71ebe7c",
+        "parentUid" : "e873d192e494976281ed9d0228d3824b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613322556,
+          "stop" : 1625613327281,
+          "duration" : 4725
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Test creating a new task",
+        "uid" : "c8808e9fe31274c",
+        "parentUid" : "e873d192e494976281ed9d0228d3824b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1625613330790,
+          "stop" : 1625613343839,
+          "duration" : 13049
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "e873d192e494976281ed9d0228d3824b"
+    } ],
+    "uid" : "3965134f6f8c1be9f46795103934f428"
+  } ]
+}
