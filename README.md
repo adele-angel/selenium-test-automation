@@ -24,8 +24,13 @@ Official OpenProject API documentation here: https://docs.openproject.org/api
 ## Generate Allure Reports
 
 ```
-$ pytest -v -s --alluredir={results dir} {test dir}
+$ pytest --alluredir={results dir} {test dir}
+
+Run on server
 $ allure serve {results dir}
+
+Create static files
+$ allure generate {results dir}
 ```
 
 ## Packages
