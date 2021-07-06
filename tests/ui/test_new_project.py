@@ -4,7 +4,7 @@ from config.credentials import Credentials
 from framework.pages.ProjectOverviewPage import ProjectOverviewPage
 from framework.pages.NewProjectPage import NewProjectPage
 from infra.shared_steps import SharedSteps
-from infra.string_util import identifier_generator
+from infra.string_util import identifier_generator, clean_spaces
 
 
 @allure.title('Test navigation into "New Project" page')
@@ -50,20 +50,20 @@ def test_create_new_project(setup):
             new_project_page.set_project_name(Credentials.NEW_PROJECT_NAME)
         with allure.step('Click "ADVANCED SETTINGS" title'):
             new_project_page.click_advanced_settings()
-        with allure.step('Type project description'):
-            new_project_page.set_project_description(Credentials.NEW_PROJECT_DESCRIPTION)
-        with allure.step('Select project status'):
-            new_project_page.set_status(Credentials.NEW_PROJECT_STATUS)
+            with allure.step('Type project description'):
+                new_project_page.set_project_description(Credentials.NEW_PROJECT_DESCRIPTION)
+            with allure.step('Select project status'):
+                new_project_page.set_status(Credentials.NEW_PROJECT_STATUS)
 
     with allure.step('Save project'):
         new_project_page.save_new_project()
+
+    with allure.step('Create a ProjectOverviewPage instance'):
+        project_overview_page = ProjectOverviewPage(driver)
+    with allure.step('On "Work packages" page, top left corner: verify the text on the button'):
+        assert project_overview_page.get_project_name_from_button() == clean_spaces(Credentials.NEW_PROJECT_NAME)
 
     with allure.step('Verify the value of the "identifier" field'):
         # Note 1: can't verify project's identifier before saving the new project (original step 6)
         # Note 2: OpenProject's identifier field doesn't match project requirements for special characters
         assert identifier_generator(Credentials.NEW_PROJECT_NAME) in driver.current_url
-
-    with allure.step('Create a ProjectOverviewPage instance'):
-        project_overview_page = ProjectOverviewPage(driver)
-    with allure.step('On "Work packages" page, top left corner: verify the text on the button'):
-        assert project_overview_page.get_project_name_from_button() == Credentials.NEW_PROJECT_NAME

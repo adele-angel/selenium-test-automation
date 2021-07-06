@@ -69,7 +69,8 @@ def test_009_create_project(setup):
 
     # step 9
     with allure.step('On "Work packages" page, top left corner: verify the text on the button'):
-        project_overview_page = ProjectOverviewPage(driver)
+        with allure.step('Create a NewProjectPage instance'):
+            project_overview_page = ProjectOverviewPage(driver)
         assert project_overview_page.get_project_name_from_button() == clean_spaces(Credentials.NEW_PROJECT_NAME)
 
     # step 10*

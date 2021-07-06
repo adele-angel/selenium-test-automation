@@ -1,4 +1,4 @@
-# selenium-test-automation [![python version: 3.9.6](https://img.shields.io/badge/python%20version-3.9.6-blue)](https://python.org/) [![pip version: 21.1.3](https://img.shields.io/badge/pip%20version-21.1.3-blue)](https://pypi.org/project/pip/)
+# selenium-test-automation [![python version: 3.9.6](https://img.shields.io/badge/python%20version-3.9.6-blue)](https://python.org/) [![pip version: 21.1.3](https://img.shields.io/badge/pip%20version-21.1.3-blue)](https://pypi.org/project/pip/) [![allure version: 2.14.0](https://img.shields.io/badge/allure%20version-2.14.0-blue)](https://docs.qameta.io/allure/)
 
 Test Automation Project for "OpenProject" Software
 
@@ -24,16 +24,16 @@ Official OpenProject API documentation here: https://docs.openproject.org/api
 ## Generate Allure Reports
 
 ```
-$ pytest -v -s --alluredir="{results dir}" {test dir}
+$ pytest -v -s --alluredir={results dir} {test dir}
 $ allure serve {results dir}
 ```
 
 ## Packages
 
-[![selenium version: 3.141.0](https://img.shields.io/badge/selenium%20version-3.141.0-green)](https://pypi.org/project/selenium)
-[![pytest version: 6.2.4](https://img.shields.io/badge/pytest%20version-6.2.4-green)](https://pypi.org/project/pytest)
-[![allure-pytest version: 2.9.43](https://img.shields.io/badge/allure--pytest%20version-2.9.43-green)](https://pypi.org/project/allure-pytest)
-[![requests version: 2.25.1](https://img.shields.io/badge/requests%20version-2.25.1-green)](https://pypi.org/project/requests)
+[![selenium version: 3.141.0](https://img.shields.io/badge/selenium%20version-3.141.0-green)](https://pypi.org/project/selenium/)
+[![pytest version: 6.2.4](https://img.shields.io/badge/pytest%20version-6.2.4-green)](https://pypi.org/project/pytest/)
+[![allure-pytest version: 2.9.43](https://img.shields.io/badge/allure--pytest%20version-2.9.43-green)](https://pypi.org/project/allure-pytest/)
+[![requests version: 2.25.1](https://img.shields.io/badge/requests%20version-2.25.1-green)](https://pypi.org/project/requests/)
 
 ```
 $ pip install selenium pytest requests allure-pytest
