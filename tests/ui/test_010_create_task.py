@@ -21,6 +21,7 @@ import allure
 from config.credentials import Credentials
 from framework.pages.WorkPackagesPage import WorkPackagesPage
 from infra.shared_steps import SharedSteps
+from infra.string_util import is_unique_str
 
 
 @allure.title("Test Creating A New Task")
@@ -60,12 +61,12 @@ def test_010_create_task(setup):
     with allure.step('Type unique strings into the subject and description boxes'):
         work_packages_page.set_task_subject(Credentials.NEW_TASK_SUBJECT)
         work_packages_page.set_task_description(Credentials.NEW_TASK_DESCRIPTION)
+    with allure.step('Verify task subject is a unique string'):
+        assert is_unique_str(Credentials.NEW_PROJECT_NAME)
 
     # step 7
     with allure.step('Click "Save" button'):
         work_packages_page.save_new_task()
-    with allure.step('Go back to "Work Packages" page'):
-        work_packages_page.click_go_back_button()
 
     # step 8
     with allure.step('Verify that a new row was added to the work packages table'):

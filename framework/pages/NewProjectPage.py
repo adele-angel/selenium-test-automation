@@ -4,6 +4,14 @@ from selenium.webdriver.common.by import By
 
 
 class NewProjectPage:
+    """
+    This class represents the New Project page object model
+
+    Attributes:
+        driver (WebDriver): WebDriver instance
+        driver_extended (WebDriver): WebDriverExtensions instance
+    """
+
     def __init__(self, driver):
         self.driver = driver
         self.driver_extended = WebDriverExtensions(driver)
@@ -18,6 +26,12 @@ class NewProjectPage:
         self.driver_extended.get_enabled_element((By.XPATH, Locators.editor_project_desc_xpath)).send_keys(project_desc)
 
     def set_status(self, status):
+        """
+        Opens the project status drop-down menu element and selects a status from the list.
+
+        Args:
+            status (str): given project status, status list: On track, At risk, Off track
+        """
         # Opening project status drop-down menu
         self.driver_extended.get_element((By.XPATH, Locators.dd_project_status_xpath)).click()
         # Selecting a status from the list
@@ -28,4 +42,10 @@ class NewProjectPage:
         self.driver_extended.until_not_exists_or_hidden((By.XPATH, Locators.btn_save_project_xpath))
 
     def get_project_identifier(self):
+        """
+        Extracts project identifier from current url
+
+        Returns:
+            str: project identifier
+        """
         return self.driver.current_url.split("/")[4]

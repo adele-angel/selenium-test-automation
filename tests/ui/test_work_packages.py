@@ -56,6 +56,9 @@ def test_create_new_task(setup):
     with allure.step("Check if webpage title is correct"):
         assert driver.title == Credentials.NEW_WORK_PACKAGE_PAGE_TITLE.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
 
+    with allure.step('Verify the text "New TASK" on top of the form that got opened on the right side'):
+        assert work_packages_page.get_work_package_form_title() == Credentials.WORK_PACKAGE_FORM_TITLE
+
     with allure.step('Fill in task subject and description'):
         work_packages_page.set_task_subject(Credentials.NEW_TASK_SUBJECT)
         work_packages_page.set_task_description(Credentials.NEW_TASK_DESCRIPTION)

@@ -18,9 +18,7 @@ ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
 
 
 class WebDriverExtensions:
-    def __init__(
-            self,
-            driver: WebDriver):
+    def __init__(self, driver: WebDriver):
         """
         Creates a new instance of this WebDriverExtensions component.
 
