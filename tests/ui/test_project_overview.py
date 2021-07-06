@@ -2,6 +2,7 @@ import pytest
 import allure
 from config.credentials import Credentials
 from framework.pages.ProjectOverviewPage import ProjectOverviewPage
+from infra.screenshot_generator import get_screenshot
 from infra.shared_steps import SharedSteps
 from infra.string_util import clean_spaces
 
@@ -22,7 +23,7 @@ def test_project_overview_page_title(setup):
         SharedSteps.select_project_steps(driver)
 
     with allure.step("Check if webpage title is correct"):
-        assert driver.title == Credentials.PROJECT_OVERVIEW_PAGE_TITLE
+        assert driver.title == Credentials.PROJECT_OVERVIEW_PAGE_TITLE, get_screenshot(driver, "project_overview", "page_title", Credentials.PROJECT_OVERVIEW_PAGE_TITLE)
 
 
 @allure.title('Test for matching project name')
@@ -44,5 +45,7 @@ def test_verify_project_name(setup):
     with allure.step('Create a ProjectOverviewPage instance'):
         project_overview_page = ProjectOverviewPage(driver)
 
-    with allure.step('Check if webpage title is correct'):
-        assert project_overview_page.get_project_name_from_button() == clean_spaces(Credentials.HOME_PAGE_SELECTED_PROJECT)
+    with allure.step('Check if selected proj is correct'):
+        expected_project_name = clean_spaces(Credentials.HOME_PAGE_SELECTED_PROJECT)
+        actual_project_name = project_overview_page.get_project_name_from_button()
+        assert actual_project_name == expected_project_name, get_screenshot(driver, "project_overview", "name", expected_project_name, actual_project_name)

@@ -20,6 +20,7 @@ import pytest
 import allure
 from config.credentials import Credentials
 from framework.pages.WorkPackagesPage import WorkPackagesPage
+from infra.screenshot_generator import get_screenshot
 from infra.shared_steps import SharedSteps
 from infra.string_util import is_unique_str
 
@@ -55,16 +56,20 @@ def test_010_create_task(setup):
 
     # step 5
     with allure.step('Verify the text "New TASK" on top of the form that got opened on the right side'):
-        assert work_packages_page.get_work_package_form_title() == Credentials.WORK_PACKAGE_FORM_TITLE
+        expected_form_title = Credentials.WORK_PACKAGE_FORM_TITLE
+        actual_form_title = work_packages_page.get_work_package_form_title()
+        assert actual_form_title == expected_form_title, get_screenshot(driver, "010", "form_title", expected_form_title, actual_form_title)
 
     # step 6
     with allure.step('Type unique strings into the subject and description boxes'):
         with allure.step('Type task subject'):
             work_packages_page.set_task_subject(Credentials.NEW_TASK_SUBJECT)
+            with allure.step('Verify task subject is a unique string'):
+                assert is_unique_str(Credentials.NEW_TASK_SUBJECT), get_screenshot(driver, "010", "unique", Credentials.NEW_TASK_SUBJECT)
         with allure.step('Type task description'):
             work_packages_page.set_task_description(Credentials.NEW_TASK_DESCRIPTION)
-        with allure.step('Verify task subject is a unique string'):
-            assert is_unique_str(Credentials.NEW_PROJECT_NAME)
+            with allure.step('Verify task subject is a unique string'):
+                assert is_unique_str(Credentials.NEW_TASK_DESCRIPTION), get_screenshot(driver, "010", "unique", Credentials.NEW_TASK_DESCRIPTION)
 
     # step 7
     with allure.step('Click "Save" button'):
@@ -73,9 +78,10 @@ def test_010_create_task(setup):
     # step 8
     with allure.step('Verify that a new row was added to the work packages table'):
         current_row_count = work_packages_page.count_table_rows()
-        assert initial_row_count + 1 == current_row_count
+        assert initial_row_count + 1 == current_row_count, get_screenshot(driver, "010", "row_count", initial_row_count, current_row_count)
 
     # step 9
     with allure.step('Verify the subject and type of the last table row'):
-        assert Credentials.NEW_TASK_SUBJECT == work_packages_page.get_last_table_row()["subject"]
-        assert Credentials.NEW_TASK_TYPE == work_packages_page.get_last_table_row()["type"]
+        last_row_data = work_packages_page.get_last_table_row()
+        assert Credentials.NEW_TASK_SUBJECT == last_row_data["subject"], get_screenshot(driver, "010", "task_subject", Credentials.NEW_TASK_SUBJECT, last_row_data["subject"])
+        assert Credentials.NEW_TASK_TYPE == last_row_data["type"], get_screenshot(driver, "010", "task_type", Credentials.NEW_TASK_TYPE, last_row_data["type"])

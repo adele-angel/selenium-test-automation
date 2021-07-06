@@ -18,6 +18,7 @@ import allure
 from config.credentials import Credentials
 from framework.pages.NewProjectPage import NewProjectPage
 from framework.pages.ProjectOverviewPage import ProjectOverviewPage
+from infra.screenshot_generator import get_screenshot
 from infra.shared_steps import SharedSteps
 from infra.string_util import is_unique_str, identifier_generator, clean_spaces
 
@@ -57,7 +58,7 @@ def test_009_create_project(setup):
     # step 6
     with allure.step('Verify project name is a unique string'):
         # Note: see step 10*
-        assert is_unique_str(Credentials.NEW_PROJECT_NAME)
+        assert is_unique_str(Credentials.NEW_PROJECT_NAME), get_screenshot(driver, "009", "unique", Credentials.NEW_PROJECT_NAME)
 
     # step 7
     with allure.step('Select status "On track"'):
@@ -71,12 +72,16 @@ def test_009_create_project(setup):
     with allure.step('On "Work packages" page, top left corner: verify the text on the button'):
         with allure.step('Create a NewProjectPage instance'):
             project_overview_page = ProjectOverviewPage(driver)
-        assert project_overview_page.get_project_name_from_button() == clean_spaces(Credentials.NEW_PROJECT_NAME)
+        with allure.step('Verify the text on the button'):
+            expected_project_name = clean_spaces(Credentials.NEW_PROJECT_NAME)
+            actual_project_name = project_overview_page.get_project_name_from_button()
+            assert actual_project_name == expected_project_name, get_screenshot(driver, "009", "name", actual_project_name, expected_project_name)
 
     # step 10*
     with allure.step('Verify the value of the "Identifier" field'):
         # Note 1: can't verify project's identifier before saving the new project (original step 6)
         # Note 2: OpenProject's identifier field doesn't match project requirements for special characters
         # Two options to verify
-        assert new_project_page.get_project_identifier() == identifier_generator(Credentials.NEW_PROJECT_NAME)
-        assert identifier_generator(Credentials.NEW_PROJECT_NAME) in driver.current_url
+        expected_identifier = identifier_generator(Credentials.NEW_PROJECT_NAME)
+        assert new_project_page.get_project_identifier() == expected_identifier, get_screenshot(driver, "009", "identifier", expected_identifier, new_project_page.get_project_identifier())
+        assert expected_identifier in driver.current_url, get_screenshot(driver, "009", "identifier", expected_identifier)

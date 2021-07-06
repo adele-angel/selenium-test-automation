@@ -2,6 +2,7 @@ import pytest
 import allure
 from config.credentials import Credentials
 from framework.pages.LoginPage import LoginPage
+from infra.screenshot_generator import get_screenshot
 
 
 @allure.title('Test OpenProject sign in page title')
@@ -14,7 +15,7 @@ def test_login_page_title(setup):
         driver.get(Credentials.BASE_URL)
 
     with allure.step('Check if webpage title is correct'):
-        assert driver.title == Credentials.LOGIN_PAGE_TITLE
+        assert driver.title == Credentials.LOGIN_PAGE_TITLE, get_screenshot(driver, "login", "title", Credentials.LOGIN_PAGE_TITLE)
 
 
 @allure.title('Test logging into OpenProject app')
@@ -40,4 +41,4 @@ def test_login(setup):
         login_page.click_login()
 
     with allure.step('Validating login by checking if sign out action exists'):
-        assert login_page.can_sign_out()
+        assert login_page.can_sign_out(), get_screenshot(driver, "login", "login")

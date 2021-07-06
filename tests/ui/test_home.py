@@ -2,6 +2,7 @@ import pytest
 import allure
 from config.credentials import Credentials
 from framework.pages.HomePage import HomePage
+from infra.screenshot_generator import get_screenshot
 from infra.shared_steps import SharedSteps
 from infra.string_util import identifier_generator
 
@@ -26,7 +27,7 @@ def test_click_create_new_project(setup):
         home_page.click_new_project_button()
 
     with allure.step('Verify navigation into "New Project" page'):
-        assert driver.title == Credentials.NEW_PROJECT_PAGE_TITLE
+        assert driver.title == Credentials.NEW_PROJECT_PAGE_TITLE, get_screenshot(driver, "home", "page_title", Credentials.NEW_PROJECT_PAGE_TITLE)
 
 
 @allure.title('Test navigation into a selected project page')
@@ -50,6 +51,8 @@ def test_select_project(setup):
 
     with allure.step('Verify the value of the "identifier" field'):
         # Note: OpenProject's identifier field doesn't match project requirements for special characters
-        assert identifier_generator(Credentials.HOME_PAGE_SELECTED_PROJECT) in driver.current_url
+        expected_identifier = identifier_generator(Credentials.HOME_PAGE_SELECTED_PROJECT)
+        assert expected_identifier in driver.current_url, get_screenshot(driver, "home", "identifier", expected_identifier)
+
         # Another option
-        assert f'title="{Credentials.HOME_PAGE_SELECTED_PROJECT}"' in driver.page_source
+        assert f'title="{Credentials.HOME_PAGE_SELECTED_PROJECT}"' in driver.page_source, get_screenshot(driver, "home", "page_source")
