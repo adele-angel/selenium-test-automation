@@ -7,9 +7,10 @@ from infra.shared_steps import SharedSteps
 
 @allure.title('Test navigation into "Work Packages" page')
 @allure.severity(allure.severity_level.NORMAL)
-@pytest.mark.smoke
+@pytest.mark.sanity
+@pytest.mark.work_packages
 def test_work_package_page_title(setup):
-    with allure.step('setup driver'):
+    with allure.step('Setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
 
@@ -23,15 +24,16 @@ def test_work_package_page_title(setup):
         SharedSteps.goto_work_packages_steps(driver)
 
     with allure.step("Check if webpage title is correct"):
-        assert driver.title == Credentials.WORK_PACKAGES_PAGE_TITLE.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
+        assert driver.title == Credentials.WORK_PACKAGES_PAGE_TITLE_1.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
 
 
 @allure.title('Test creating a new task')
 @allure.severity(allure.severity_level.CRITICAL)
-@pytest.mark.smoke
-@pytest.mark.test_010
+@pytest.mark.sanity
+@pytest.mark.work_packages
+@pytest.mark.task
 def test_create_new_task(setup):
-    with allure.step("setup driver"):
+    with allure.step('Setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
 
@@ -50,14 +52,17 @@ def test_create_new_task(setup):
     with allure.step('Note the number of rows displayed in the work packages table'):
         initial_row_count = work_packages_page.count_table_rows()
 
+    with allure.step('Check if webpage title is correct'):
+        assert driver.title == Credentials.WORK_PACKAGES_PAGE_TITLE_2.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
+
     with allure.step('Click "+ Create" green button and select "TASK"'):
         work_packages_page.create_new_task()
 
-    with allure.step("Check if webpage title is correct"):
-        assert driver.title == Credentials.NEW_WORK_PACKAGE_PAGE_TITLE.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
-
     with allure.step('Verify the text "New TASK" on top of the form that got opened on the right side'):
         assert work_packages_page.get_work_package_form_title() == Credentials.WORK_PACKAGE_FORM_TITLE
+
+    with allure.step('Check if webpage title is correct'):
+        assert driver.title == Credentials.NEW_WORK_PACKAGE_PAGE_TITLE.format(Credentials.HOME_PAGE_SELECTED_PROJECT)
 
     with allure.step('Fill in task subject and description'):
         work_packages_page.set_task_subject(Credentials.NEW_TASK_SUBJECT)
@@ -66,7 +71,7 @@ def test_create_new_task(setup):
     with allure.step('Click "Save" button'):
         work_packages_page.save_new_task()
 
-    with allure.step("Check if webpage title is correct"):
+    with allure.step('Check if webpage title is correct'):
         last_row_data = work_packages_page.get_last_table_row()
         assert driver.title == Credentials.CREATED_TASK_PAGE_TITLE.format(last_row_data["subject"], last_row_data["id"], Credentials.HOME_PAGE_SELECTED_PROJECT)
 

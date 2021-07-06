@@ -14,10 +14,14 @@ Expected Result:
     2. Response contains a "work package" object with description matching the value set in the request
 """
 
+import pytest
+import allure
 from config.api import API
 from framework.api.work_packages_api import WorkPackagesApi
 
 
+@allure.title('Test 007 - API - Create Work Package')
+@pytest.mark.t007
 def test_007_create_work_package():
     data = {
         "subject": API.TEST_007["WORK_PACKAGE_SUBJECT"],
@@ -37,6 +41,6 @@ def test_007_create_work_package():
     actual_data = actual.json()
 
     # Validate status code
-    assert actual.status_code == 201, "Failed to get correct response code"
+    assert actual.status_code == 201, f'Failed to send status code: {actual.status_code}'
     # Validate work package subject
-    assert actual_data["subject"] == API.TEST_007["WORK_PACKAGE_SUBJECT"], "Failed to get correct work package subject"
+    assert actual_data["subject"] == API.TEST_007["WORK_PACKAGE_SUBJECT"], f'Failed to get matching work package subject: {actual_data["subject"]}'

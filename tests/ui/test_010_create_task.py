@@ -24,12 +24,12 @@ from infra.shared_steps import SharedSteps
 from infra.string_util import is_unique_str
 
 
-@allure.title("Test Creating A New Task")
+@allure.title('Test 010 - UI - Create Task')
 @allure.severity(allure.severity_level.NORMAL)
-@pytest.mark.test_010
+@pytest.mark.t010
 @pytest.mark.task
 def test_010_create_task(setup):
-    with allure.step("setup driver"):
+    with allure.step('Setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
 
@@ -44,10 +44,10 @@ def test_010_create_task(setup):
     # step 3
     with allure.step('On the "Project Overview" page, left side menu, click "Work packages"'):
         SharedSteps.goto_work_packages_steps(driver)
-    with allure.step('Create a WorkPackagesPage instance'):
-        work_packages_page = WorkPackagesPage(driver)
-    with allure.step('Note the number of rows displayed in the work packages table'):
-        initial_row_count = work_packages_page.count_table_rows()
+        with allure.step('Create a WorkPackagesPage instance'):
+            work_packages_page = WorkPackagesPage(driver)
+        with allure.step('Note the number of rows displayed in the work packages table'):
+            initial_row_count = work_packages_page.count_table_rows()
 
     # step 4
     with allure.step('Click "+ Create" green button and select "TASK"'):
@@ -59,10 +59,12 @@ def test_010_create_task(setup):
 
     # step 6
     with allure.step('Type unique strings into the subject and description boxes'):
-        work_packages_page.set_task_subject(Credentials.NEW_TASK_SUBJECT)
-        work_packages_page.set_task_description(Credentials.NEW_TASK_DESCRIPTION)
-    with allure.step('Verify task subject is a unique string'):
-        assert is_unique_str(Credentials.NEW_PROJECT_NAME)
+        with allure.step('Type task subject'):
+            work_packages_page.set_task_subject(Credentials.NEW_TASK_SUBJECT)
+        with allure.step('Type task description'):
+            work_packages_page.set_task_description(Credentials.NEW_TASK_DESCRIPTION)
+        with allure.step('Verify task subject is a unique string'):
+            assert is_unique_str(Credentials.NEW_PROJECT_NAME)
 
     # step 7
     with allure.step('Click "Save" button'):

@@ -1,3 +1,4 @@
+from time import sleep
 from config.locators import Locators
 from infra.web_driver_extensions import WebDriverExtensions
 from selenium.webdriver.common.by import By
@@ -17,13 +18,14 @@ class NewProjectPage:
         self.driver_extended = WebDriverExtensions(driver)
 
     def set_project_name(self, project_name):
-        self.driver_extended.get_enabled_element((By.ID, Locators.input_project_name_id)).send_keys(project_name)
+        self.driver_extended.get_visible_element((By.ID, Locators.input_project_name_id)).send_keys(project_name)
 
     def click_advanced_settings(self):
         self.driver_extended.get_element((By.XPATH, Locators.btn_advanced_settings_xpath)).click()
 
     def set_project_description(self, project_desc):
-        self.driver_extended.get_enabled_element((By.XPATH, Locators.editor_project_desc_xpath)).send_keys(project_desc)
+        self.driver_extended.get_element((By.XPATH, Locators.editor_project_desc_xpath)).send_keys(project_desc)
+        sleep(1)
 
     def set_status(self, status):
         """
@@ -38,8 +40,7 @@ class NewProjectPage:
         self.driver_extended.get_visible_element((By.XPATH, Locators.dd_project_selected_status_xpath.format(status))).click()
 
     def save_new_project(self):
-        self.driver_extended.get_element((By.XPATH, Locators.btn_save_project_xpath)).click()
-        self.driver_extended.until_not_exists_or_hidden((By.XPATH, Locators.btn_save_project_xpath))
+        self.driver_extended.get_enabled_element((By.XPATH, Locators.btn_save_project_xpath)).click()
 
     def get_project_identifier(self):
         """

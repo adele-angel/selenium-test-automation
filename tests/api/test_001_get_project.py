@@ -14,12 +14,14 @@ Expected Result:
     3. Project description is "This is the first test project"
 """
 
+import pytest
+import allure
 from config.api import API
 from framework.api.projects_api import ProjectsApi
 
 
-# TODO: Maybe add an assert message helper function
-
+@allure.title('Test 001 - API - Get Project by ID')
+@pytest.mark.t001
 def test_001_get_project():
     # Send GET request
     actual = ProjectsApi(API.BASE_URL, API.API_KEY).get_project(API.TEST_001["PROJECT_ID"])
@@ -27,8 +29,8 @@ def test_001_get_project():
     actual_data = actual.json()
 
     # Validate status code
-    assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
+    assert actual.status_code == 200, f'Failed to send status code: {actual.status_code}'
     # Validate project name
-    assert actual_data["name"] == API.TEST_001["PROJECT_NAME"], f'Failed to get matching project name {actual_data["name"]}'
+    assert actual_data["name"] == API.TEST_001["PROJECT_NAME"], f'Failed to get matching project name: {actual_data["name"]}'
     # Validate project description
-    assert actual_data["description"]["raw"] == API.TEST_001["PROJECT_DESC"], f'Failed to get matching project description {actual_data["description"]["raw"]}'
+    assert actual_data["description"]["raw"] == API.TEST_001["PROJECT_DESC"], f'Failed to get matching project description: {actual_data["description"]["raw"]}'

@@ -13,10 +13,14 @@ Expected Result:
     2. Response contains a "project" object with description matching the value set in the request
 """
 
+import pytest
+import allure
 from config.api import API
 from framework.api.projects_api import ProjectsApi
 
 
+@allure.title('Test 002 - API - Update Project')
+@pytest.mark.t002
 def test_002_update_project():
     data = {
         "description": {
@@ -30,8 +34,8 @@ def test_002_update_project():
     actual_data = actual.json()
 
     # Validate status code
-    assert actual.status_code == 200, f'Failed to send status code {actual.status_code}'
+    assert actual.status_code == 200, f'Failed to send status code: {actual.status_code}'
     # Validate project name
-    assert actual_data["name"] == API.TEST_001["PROJECT_NAME"], f'Failed to get matching project name {actual_data["name"]}'
+    assert actual_data["name"] == API.TEST_001["PROJECT_NAME"], f'Failed to get matching project name: {actual_data["name"]}'
     # Validate project description
-    assert actual_data["description"]["raw"] == API.TEST_002["PROJECT_DESC_UPD"], f'Failed to get matching project description {actual_data["description"]["raw"]}'
+    assert actual_data["description"]["raw"] == API.TEST_002["PROJECT_DESC_UPD"], f'Failed to get matching project description: {actual_data["description"]["raw"]}'

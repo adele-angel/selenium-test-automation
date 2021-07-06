@@ -21,6 +21,7 @@ class Locators:
     # dd_status_OnTrack_xpath = "//span[text()='On track']//parent::div"
     # dd_status_AtRisk_xpath = "//span[text()='At risk']//parent::div"
     # dd_status_OffTrack_xpath = "//span[text()='Off track']//parent::div"
+    form_new_project_xpath = "//*[@id='content']/openproject-base/div/ui-view/op-new-project/op-dynamic-form/form"
     btn_save_project_xpath = "//button[@type='submit'][@class='button -highlight']"
 
     # Project Overview Page
@@ -31,8 +32,10 @@ class Locators:
     # Work Packages Page
     dd_create_work_package_class = "wp-create-button"
     dd_create_task_xpath = "//*[@id='types-context-menu']//li[.='Task']"
-    edit_work_package_type_class = "__hl_inline_type_1 inline-edit--display-field type -required -editable"
-    edit_work_package_status_class = "inline-edit--display-field status -required -editable"
+    edit_work_package_status_xpath = "//*[@id='content']/openproject-base/div/ui-view/openproject-base/div/ui-view/work-packages-base/div/ui-view/wp-view-page/div/div[3]/div[2]/wp-new-split-view/div/edit-form/div[1]/div/wp-type-status/div/div[1]/editable-attribute-field/div/div[2]/span"
+    edit_work_package_type_xpath = "//*[@id='content']/openproject-base/div/ui-view/openproject-base/div/ui-view/work-packages-base/div/ui-view/wp-view-page/div/div[3]/div[2]/wp-new-split-view/div/edit-form/div[1]/div/wp-type-status/div/div[2]/editable-attribute-field/div/div[2]/span"
+    # edit_work_package_type_class = "__hl_inline_type_1 inline-edit--display-field type -required -editable"
+    # edit_work_package_status_class = "inline-edit--display-field status -required -editable"
     # dd_actions_xpath = "//*[@id='wrapper']/header/div[1]/ul/li[2]"
     # dd_create_task_xpath = "//*[@id='quick-add-menu']//a[.='Task']"
     tb_work_packages_xpath = "//tbody[contains(@class,'results-tbody work-package--results-tbody')]//tr"

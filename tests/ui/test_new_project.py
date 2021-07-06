@@ -9,9 +9,11 @@ from infra.string_util import identifier_generator
 
 @allure.title('Test navigation into "New Project" page')
 @allure.severity(allure.severity_level.NORMAL)
-@pytest.mark.smoke
+@pytest.mark.sanity
+@pytest.mark.new_project
+@pytest.mark.project
 def test_new_project_page_title(setup):
-    with allure.step('setup driver'):
+    with allure.step('Setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
 
@@ -27,10 +29,11 @@ def test_new_project_page_title(setup):
 
 @allure.title('Test creating a new project')
 @allure.severity(allure.severity_level.CRITICAL)
-@pytest.mark.smoke
-@pytest.mark.test_009
+@pytest.mark.sanity
+@pytest.mark.new_project
+@pytest.mark.project
 def test_create_new_project(setup):
-    with allure.step("setup driver"):
+    with allure.step('Setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
 
@@ -40,15 +43,19 @@ def test_create_new_project(setup):
     with allure.step('On "Home" page, click "+ Project" green button'):
         SharedSteps.click_create_new_project_steps(driver)
 
-    with allure.step('Create a NewProjectPage instance'):
-        new_project_page = NewProjectPage(driver)
-    with allure.step("Enter project info"):
-        new_project_page.set_project_name(Credentials.NEW_PROJECT_NAME)
-        new_project_page.click_advanced_settings()
-        new_project_page.set_project_description(Credentials.NEW_PROJECT_DESCRIPTION)
-        new_project_page.set_status(Credentials.NEW_PROJECT_STATUS)
+    with allure.step('Enter project info'):
+        with allure.step('Create a NewProjectPage instance'):
+            new_project_page = NewProjectPage(driver)
+        with allure.step('Type project name'):
+            new_project_page.set_project_name(Credentials.NEW_PROJECT_NAME)
+        with allure.step('Click "ADVANCED SETTINGS" title'):
+            new_project_page.click_advanced_settings()
+        with allure.step('Type project description'):
+            new_project_page.set_project_description(Credentials.NEW_PROJECT_DESCRIPTION)
+        with allure.step('Select project status'):
+            new_project_page.set_status(Credentials.NEW_PROJECT_STATUS)
 
-    with allure.step("Save project"):
+    with allure.step('Save project'):
         new_project_page.save_new_project()
 
     with allure.step('Verify the value of the "identifier" field'):

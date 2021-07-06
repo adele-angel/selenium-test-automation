@@ -2,11 +2,11 @@ class API:
     # API Credentials
     PORT = "8080"
     BASE_URL = f"http://localhost:{PORT}"
-    API_KEY = "75c3f718c3d3dfea0147d868b4230f768eafc7ddca038a1eac67c67f62bb25f6"
+    API_KEY = "7f9f517347e00def788a5227e7485bff3e14da38c89c0464f50c997d445db729"
 
     # Test 001 - API - Get Project by ID
     TEST_001 = {
-        "PROJECT_ID": "4",
+        "PROJECT_ID": "3",
         "PROJECT_NAME": "TestProject1",
         "PROJECT_DESC": "This is the first test project"
     }
@@ -18,7 +18,7 @@ class API:
 
     # Test 003 - API - Create Project
     TEST_003 = {
-        "PROJECT_NAME": "@My 2nd Test Project!",
+        "PROJECT_NAME": "@My 2nd Test #Project!",
         "PROJECT_DESC": "This is yet another test project",
         "PROJECT_IDENTIFIER": "my-2nd-test-project"
     }
@@ -40,7 +40,6 @@ class API:
     # Test 006 - API - Update Work Package
     TEST_006 = {
         "WORK_PACKAGE_DESC_UPD": "This is updated task description\nHere's a unique string: (,/#@$%) 1+1=2.",
-        "lockVersion": "2"
     }
 
     # Test 007 - API - Create Work Package

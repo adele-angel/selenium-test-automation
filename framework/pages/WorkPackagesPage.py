@@ -21,7 +21,6 @@ class WorkPackagesPage:
         self.driver_extended.get_element((By.CLASS_NAME, Locators.dd_create_work_package_class)).click()
         # Choose work package of type "Task"
         self.driver_extended.get_visible_element((By.XPATH, Locators.dd_create_task_xpath)).click()
-        self.driver_extended.until_visible((By.CLASS_NAME, Locators.form_new_task_class))
 
     def get_work_package_form_title(self):
         """
@@ -32,16 +31,16 @@ class WorkPackagesPage:
             str: form title
         """
         # Get work package status
-        work_package_status = self.driver_extended.get_element((By.CLASS_NAME, Locators.edit_work_package_status_class)).text
+        work_package_status = self.driver_extended.get_visible_element((By.XPATH, Locators.edit_work_package_status_xpath)).text
         # Get work package type
-        work_package_type = self.driver_extended.get_element((By.CLASS_NAME, Locators.edit_work_package_type_class)).text
+        work_package_type = self.driver_extended.get_visible_element((By.XPATH, Locators.edit_work_package_type_xpath)).text
         return f"{work_package_status} {work_package_type}"
 
     def set_task_subject(self, task_subject):
-        self.driver_extended.get_visible_element((By.XPATH, Locators.input_task_subject_xpath)).send_keys(task_subject)
+        self.driver_extended.get_enabled_element((By.XPATH, Locators.input_task_subject_xpath)).send_keys(task_subject)
 
     def set_task_description(self, task_desc):
-        self.driver_extended.get_element((By.XPATH, Locators.editor_task_desc_xpath)).send_keys(task_desc)
+        self.driver_extended.get_enabled_element((By.XPATH, Locators.editor_task_desc_xpath)).send_keys(task_desc)
 
     def save_new_task(self):
         """

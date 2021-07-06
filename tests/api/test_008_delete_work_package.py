@@ -18,11 +18,14 @@ Step:
 """
 
 from time import sleep
+import pytest
+import allure
 from config.api import API
 from framework.api.work_packages_api import WorkPackagesApi
 
 
-# TODO: Check if project ID is necessary for deleting a work packages
+@allure.title('Test 008 - API - Delete Work Package')
+@pytest.mark.t008
 def test_008_delete_work_package():
     data = {
         "subject": API.TEST_008["WORK_PACKAGE_SUBJECT"],
@@ -39,17 +42,17 @@ def test_008_delete_work_package():
     actual_data = actual.json()
     work_package_id = actual_data["id"]
     # Validate status code
-    assert actual.status_code == 201, f'Failed to get correct response code {actual.status_code}'
+    assert actual.status_code == 201, f'Failed to send status code: {actual.status_code}'
 
     # Delete newly created work package
     # Send DELETE request
     delete_action = WorkPackagesApi(API.BASE_URL, API.API_KEY).delete_work_package(work_package_id)
     # Validate status code
-    assert delete_action.status_code == 204, f'Failed to get correct response code {delete_action.status_code}'
+    assert delete_action.status_code == 204, f'Failed to send status code: {actual.status_code}'
 
     # Confirm the work package was deleted
     sleep(5)  # wait for actual server side delete
     # Send GET request
     get_action = WorkPackagesApi(API.BASE_URL, API.API_KEY).get_work_package(work_package_id)
     # Validate status code
-    assert get_action.status_code == 404, f'Failed to get correct response code {get_action.status_code}'
+    assert get_action.status_code == 404, f'Failed to send status code: {actual.status_code}'

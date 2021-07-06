@@ -12,7 +12,7 @@ class Credentials:
 
     # New Project page
     NEW_PROJECT_PAGE_TITLE = "New project | OpenProject"
-    NEW_PROJECT_NAME = "Hello World! 1#2@3"
+    NEW_PROJECT_NAME = "Hello  World! 1#2@3"
     NEW_PROJECT_DESCRIPTION = "French fries, or simply fries, chips, finger chips, hot chips or French-fried potatoes, are deep-fried potatoes, which have been cut into batons."
     NEW_PROJECT_STATUS = "On track"
 
@@ -20,7 +20,8 @@ class Credentials:
     PROJECT_OVERVIEW_PAGE_TITLE = "Overview"
 
     # Work Packages Page
-    WORK_PACKAGES_PAGE_TITLE = "Work Packages | {} | OpenProject"
+    WORK_PACKAGES_PAGE_TITLE_1 = "Work Packages | {} | OpenProject"
+    WORK_PACKAGES_PAGE_TITLE_2 = "All open | {} | OpenProject"
     WORK_PACKAGE_FORM_TITLE = "New TASK"
     NEW_TASK_TYPE = "TASK"
     NEW_TASK_SUBJECT = "My Task 1"

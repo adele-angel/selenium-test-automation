@@ -16,12 +16,16 @@ Steps:
             1. Response status: 404
             2. Response contains an error message: "The requested resource could not be found."
 """
-from time import sleep
 
+from time import sleep
+import pytest
+import allure
 from config.api import API
 from framework.api.projects_api import ProjectsApi
 
 
+@allure.title('Test 004 - API - Delete Project')
+@pytest.mark.t004
 def test_004_delete_project():
     data = {
         "name": API.TEST_004["PROJECT_NAME"]
@@ -33,17 +37,17 @@ def test_004_delete_project():
     actual_data = actual.json()
     project_id = actual_data["id"]
     # Validate status code
-    assert actual.status_code == 201, project_id
+    assert actual.status_code == 201, f'Failed to send status code: {actual.status_code}'
 
     # Delete newly created project
     # Send DELETE request
     delete_action = ProjectsApi(API.BASE_URL, API.API_KEY).delete_project(project_id)
     # Validate status code
-    assert delete_action.status_code == 204
+    assert delete_action.status_code == 204, f'Failed to send status code: {actual.status_code}'
 
     # Confirm the project was deleted
     sleep(5)  # wait for actual server side delete
     # Send GET request
     get_action = ProjectsApi(API.BASE_URL, API.API_KEY).get_project(project_id)
     # Validate status code
-    assert get_action.status_code == 404
+    assert get_action.status_code == 404, f'Failed to send status code: {actual.status_code}'

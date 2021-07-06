@@ -8,11 +8,13 @@ from infra.string_util import identifier_generator
 
 @allure.title('Test navigation into "New Project" page')
 @allure.severity(allure.severity_level.CRITICAL)
-@pytest.mark.smoke
-@pytest.mark.test_009
+@pytest.mark.sanity
+@pytest.mark.home
+@pytest.mark.project
 def test_click_create_new_project(setup):
-    driver = setup
-    driver.get(Credentials.BASE_URL)
+    with allure.step('Setup driver'):
+        driver = setup
+        driver.get(Credentials.BASE_URL)
 
     with allure.step('Login to OpenProject'):
         SharedSteps.login_steps(driver)
@@ -29,10 +31,11 @@ def test_click_create_new_project(setup):
 
 @allure.title('Test navigation into a selected project page')
 @allure.severity(allure.severity_level.CRITICAL)
-@pytest.mark.smoke
-@pytest.mark.test_010
+@pytest.mark.sanity
+@pytest.mark.home
+@pytest.mark.project
 def test_select_project(setup):
-    with allure.step("setup driver"):
+    with allure.step('Setup driver'):
         driver = setup
         driver.get(Credentials.BASE_URL)
 
@@ -48,5 +51,5 @@ def test_select_project(setup):
     with allure.step('Verify the value of the "identifier" field'):
         # Note: OpenProject's identifier field doesn't match project requirements for special characters
         assert identifier_generator(Credentials.HOME_PAGE_SELECTED_PROJECT) in driver.current_url
-        # Another option to verify if navigation to project's page
+        # Another option
         assert f'title="{Credentials.HOME_PAGE_SELECTED_PROJECT}"' in driver.page_source

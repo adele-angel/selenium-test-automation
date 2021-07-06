@@ -4,9 +4,10 @@ import allure
 from selenium.webdriver.remote.webdriver import WebDriver
 from config.settings import Settings
 
+
 # TODO: Add screenshot on failed assertion with allure
-# def get_screenshot(driver, file_name):
-#     allure.attach(driver.get_screenshot_as_png(), name=file_name, attachment_type=allure.attachment_type.PNG)
+def get_screenshot(driver, file_name):
+    allure.attach(driver.get_screenshot_as_png(), name=file_name, attachment_type=allure.attachment_type.PNG)
 
 
 def _capture_screenshot(driver: WebDriver):
