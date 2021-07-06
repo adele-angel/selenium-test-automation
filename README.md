@@ -23,6 +23,12 @@ Official OpenProject API documentation here: https://docs.openproject.org/api
 
 ## Generate Allure Reports
 
+### To view this project's allure report:
+
+https://selenium-tests-automation-allure-report.netlify.app/
+
+The report's static files are located under project-root/reports folder.
+
 ```
 $ pytest --alluredir={results dir} {test dir}
 

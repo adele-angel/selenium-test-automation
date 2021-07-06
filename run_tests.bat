@@ -1,7 +1,6 @@
-rem Run all tests and create allure reports
+rem Run all tests, create & view allure report
 
 call venv\scripts\activate
 
-pytest -v -s --alluredir=/reports tests
-pytest --alluredir=/reports/allure_results
-allure serve /reports/allure_results
+pytest -v -s --alluredir=reports
+allure serve reports
